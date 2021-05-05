@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cereal.apps.CerealConfig',
-    'manufacturer.apps.ManufacturerConfig'
+    'manufacturer.apps.ManufacturerConfig',
+    'checkout.apps.CheckoutConfig',
+    'cart.apps.CartConfig',
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
