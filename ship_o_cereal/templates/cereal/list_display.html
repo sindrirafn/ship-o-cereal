@@ -1,9 +1,12 @@
+{% load static %}
 
-<!--<div class = flex-spacer>-->
-<!--&lt;!&ndash;     <div class = ".cerealBox">&ndash;&gt;-->
-<!--&lt;!&ndash;        <h4>{{ cereal.name }}</h4>&ndash;&gt;-->
-<!--&lt;!&ndash;        <p>{{ cereal.price }} ISK</p>&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;        <img src="{% static 'images/'|add:cereal.name|add:'.jpeg' %}" class="rounded-circle w-25 p-3" alt="Johnny">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;     </div>&ndash;&gt;-->
-<!--    <h1>Testing</h1>-->
-<!--</div>-->
+<div class="container">
+    <h1>Testing</h1>
+    <div class = flex-spacer>
+         <div class = ".cerealBox">
+            <h4>{{ cereal.name }}</h4>
+            <p>{{ cereal.price }} ISK</p>
+            <img src="{% static 'images/'|add:cereal.name|add:'.jpg' %}" class="rounded-circle w-25 p-3" alt="Johnny">
+         </div>
+    </div>
+</div>
