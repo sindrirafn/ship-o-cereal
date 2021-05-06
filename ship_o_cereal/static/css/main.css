@@ -7,3 +7,8 @@
     flex: border-box;
     border: solid 2px black;
 }
+
+.card:hover{
+    transform: scale(1.05);
+
+}

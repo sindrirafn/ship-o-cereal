@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="cereal">
-        <h2> Herna eru morgunkorn </h2>
-    </div>
+<div class="row row-cols-1 row-cols-md-3">
 
-    {% for cereal in cereals %}
-        {% include "cereal/list_display.html" %}
+        {% for cereal in cereals %}
+            {% include "cereal/list_display.html" %}
 
-    {% endfor %}
+        {% endfor %}
+</div>
+
+
 {% endblock %}
 

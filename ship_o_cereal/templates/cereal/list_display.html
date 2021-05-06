@@ -1,19 +1,24 @@
 {% load static %}
 
-<div class="d-inline-flex">
-<!--        <div class = ".cerealBox">-->
-<!--            <img src="{% static 'images/'|add:cereal.name|add:'.jpg' %}" class="img-thumbnail w-25 p-3" alt="{{ cereal.name }}">-->
-<!--            <h4>{{ cereal.name }}</h4>-->
-<!--            <p>{{ cereal.price }} ISK</p>-->
 
-<!--        </div>-->
-    <div class="card" style="width: 18rem;">
-        <img src="{% static 'images/'|add:cereal.name|add:'.jpeg' %}" class="card-img-top" alt="{{ cereal.name }}">
+<div class="col mb-4">
+    <div class="card shadow">
+            <img src="{% static 'images/'|add:cereal.name|add:'.jpeg' %}" class="card-img-top p-3" alt="{{ cereal.name }}">
+        <!--Card content-->
         <div class="card-body">
+            <!--Title-->
             <h4 class="card-title">{{ cereal.name }}</h4>
-            <p class="card-text">Cereal description and information.</p>
+            <!--Text-->
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+            <!--Price-->
             <h5 class="card-title">{{ cereal.price }} ISK</h5>
-            <a href="#" class="btn btn-primary stretched-link">Check it out mane</a>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<!--            <button type="button" class="btn btn-light-blue btn-md">Read more</button>-->
+            <a href="{% url 'cereal-item' %}" class="btn btn-primary">More info</a>
+            <a href="#" class="btn btn-primary btn-inline">+Cart</a>
+
         </div>
+
     </div>
 </div>

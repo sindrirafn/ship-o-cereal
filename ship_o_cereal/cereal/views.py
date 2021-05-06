@@ -10,3 +10,6 @@ cereals = [
 
 def index(request):
     return render(request, 'cereal/index.html', context={'cereals':cereals})
+
+def item(request):
+    return render(request, 'cereal/single_product.html')
