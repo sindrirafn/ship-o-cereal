@@ -20,7 +20,7 @@ urlpatterns = [
     path('', include('front_page.urls')),
     path('admin/', admin.site.urls),
     path('cereals/', include('cereal.urls')),
-    path('manufacturers/', include('manufacturer.urls')),
+    path('merch/', include('merch.urls')),
     path('users/', include('user.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
