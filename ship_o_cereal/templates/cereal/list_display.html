@@ -3,7 +3,14 @@
 
 <div class="col mb-4">
     <div class="card shadow">
-            <img src="{% static 'images/'|add:cereal.name|add:'.jpeg' %}" class="card-img-top p-3" alt="{{ cereal.name }}">
+
+        <a href="{% url 'cereal-item' %}">
+            <img class="card-img-top p-3" src="{% static 'images/'|add:cereal.name|add:'.jpeg' %}"
+                 alt="{{ cereal.name }}">
+
+        </a>
+
+<!--        <img src="{% static 'images/'|add:cereal.name|add:'.jpeg' %}" class="card-img-top p-3" alt="{{ cereal.name }}">-->
         <!--Card content-->
         <div class="card-body">
             <!--Title-->
