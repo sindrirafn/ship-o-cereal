@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
     <div class="cereal">
         <h2> Herna eru morgunkorn </h2>
     </div>
+    {% for cereal in cereals %}
+         <div class = flex-spacer>
+             <div class = ".cerealBox">
+                <h4>{{ cereal.name }}</h4>
+                <p>{{ cereal.price }} ISK</p>
+                <img src="{% static 'images/'|add:cereal.name|add:'.jpeg' %}" class="rounded-circle w-25 p-3" alt="Johnny">
+             </div>
+        </div>
+    {% endfor %}
 {% endblock %}
