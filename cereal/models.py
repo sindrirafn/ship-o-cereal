@@ -9,7 +9,7 @@ class CerealCategory(models.Model):
 
 class Cereal(models.Model):
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=1000, blank = True)
+    description = models.CharField(max_length=255, blank = True)
     price = models.FloatField()
     category = models.ForeignKey(CerealCategory, on_delete=models.CASCADE)
     #manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
