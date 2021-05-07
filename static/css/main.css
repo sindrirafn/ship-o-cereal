@@ -1,0 +1,62 @@
+.cereal {
+    background-color: lightblue;
+    border: solid 2px rgba(155, 155, 155, .5);
+}
+
+.cerealBox {
+    flex: border-box;
+    border: solid 2px black;
+}
+
+.card:hover{
+    transform: scale(1.05);
+
+}
+
+.box-elem{
+    background-color: ghostwhite;
+    border-radius: 5px;
+    padding: 11px;
+}
+
+.btn-checkout{
+    float: right;
+    margin: 5px;
+    background-color: white;
+}
+
+.btn-checkout:hover{
+    background-color: limegreen;
+}
+
+.btn-continue{
+    background-color: white;
+}
+
+.btn-continue:hover{
+    background-color: dodgerblue;
+}
+
+.logo {
+  font-size: 200px;
+}
+
+.col-sm-4 {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.contact{
+    background-color: papayawhip;
+    border-radius: 10px;
+}
+
+.contact-btn{
+    float: right;
+    background: white;
+    border: black 2px;
+}
+
+.contact-btn:hover{
+    background-color: limegreen;
+}

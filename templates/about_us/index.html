@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-8">
+          <h4>Ship O' Cereal is a company that sells cereal and cereal merchandise to all over the world!</h4>
+          <h5>We want everyone to be able to enjoy the great cereal that this world has to offer!</h5>
+          <h5>We are three students studying Computer Science at the Reykjavik University and this website is a part of a three week course called, Verklegt Námskeið II</h5>
+          <h6>Creators:</h6>
+          <ul>
+            <li>Jón Evert</li>
+            <li>Sindri Rafn</li>
+            <li>Steinar</li>
+          </ul>
+        </div>
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-signal logo"></span>
+        </div>
+      </div>
+    </div>
+<br>
+<div class="container-fluid bg-grey contact">
+  <br>
+  <h2 class="text-center">Contact Ship O' Cereal!</h2>
+  <br>
+  <div class="row">
+    <div class="col-sm-5">
+      <p><span class="glyphicon glyphicon-map-marker"></span> Reykjavík, Iceland</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +354 5812345</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> contact@shipocereal.com</p>
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <a href="#" class="btn btn-outline-primary my-2 my-sm-0 contact-btn">Send</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
