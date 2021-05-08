@@ -1,0 +1,14 @@
+.cereal {
+    background-color: lightblue;
+    border: solid 2px rgba(155, 155, 155, .5);
+}
+
+.cerealBox {
+    flex: border-box;
+    border: solid 2px black;
+}
+
+.card:hover{
+    transform: scale(1.05);
+
+}
