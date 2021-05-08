@@ -60,3 +60,11 @@
 .contact-btn:hover{
     background-color: limegreen;
 }
+
+.save-changes-btn{
+    background-color: white;
+}
+
+.save-changes-btn:hover{
+    background-color: limegreen;
+}
