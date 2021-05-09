@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form class="border border-light p-5">
+
+    <p class="h4 mb-4 text-center">Contact Information</p>
+
+    <label for="firstNameInput">First name</label>
+    <input type="text" id="firstNameInput" class="form-control mb-4" placeholder="First name">
+
+    <label for="lastNameInput">Last name</label>
+    <input type="text" id="firstNameInput" class="form-control mb-4" placeholder="First name">
+
+    <label for="addressInput">Adress</label>
+    <input type="text" id="addressInput" class="form-control mb-4" placeholder="Text input">
+
+    <label for="addressOptInput">Second address (optional)</label>
+    <input type="text" id="addressOptInput" class="form-control mb-4" placeholder="Text input">
+
+    <label for="addInfoInput">Additional information</label>
+    <textarea id="addInfoInput" class="form-control mb-4" placeholder="aksjdbgiasjdhbgadhjsf"></textarea>
+
+    <label for="selectCountry">Country</label>
+    <select class="browser-default custom-select mb-4" id="selectCountry">
+        <option value="" disabled="" selected="">Choose your option</option>
+        <option value="1">Iceland</option>
+        <option value="2">United States</option>
+        <option value="3">Kazakhstan</option>
+    </select>
+
+    <label for="cityInput">City</label>
+    <input type="text" id="cityInput" class="form-control mb-4" placeholder="Text input">
+
+    <label for="zipInput">Zip code</label>
+    <input type="text" id="zipInput" class="form-control mb-4" placeholder="Text input">
+
+    <a href="{% url 'checkout-index' %}" class="btn btn-info btn-block my-4" type="submit">Continue to payment</a>
+
+</form>
+
+{% endblock %}
