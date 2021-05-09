@@ -63,8 +63,14 @@
 
 .save-changes-btn{
     background-color: white;
+    border: lightgrey solid 1px;
+    color: black;
 }
 
 .save-changes-btn:hover{
+    background-color: limegreen;
+}
+
+.save-changes-btn:focus{
     background-color: limegreen;
 }

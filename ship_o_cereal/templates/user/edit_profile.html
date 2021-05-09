@@ -3,18 +3,24 @@
 {% load static %}
 {% block content %}
     <div class="wrapper bg-white mt-sm-5">
-        <h4 class="pb-4 border-bottom">Edit profile</h4>
-        <div class="d-flex align-items-start py-3 border-bottom"> <img src="{% static 'images/johnny.jpeg' %}" class="rounded-circle w-25 p-3" alt="Johnny">
+        <p class="h4 mb-4 text-center">Edit Profile</p>
+        <div class="d-flex align-items-center py-3"> <img src="{% static 'images/johnny.jpeg' %}" class="rounded-circle w-25 p-3" alt="Johnny">
             <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-                <p>Accepted file type .png. Less than 1MB</p> <button class="btn button border"><b>Change profile picture.</b></button>
+                <p>Accepted file type .png. Less than 1MB</p> <button class="btn btn-info my-4"><b>Change profile picture</b></button>
             </div>
         </div>
-        <div class="py-2">
-            <div class="row py-2">
-                <div class="col-md-6"> <label for="firstname">First Name</label> <input type="text" class="bg-light form-control" placeholder="Ómar"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Last Name</label> <input type="text" class="bg-light form-control" placeholder="Ragnarsson"> </div>
-            </div>
-            <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3 save-changes-btn">Save Changes</button> <button class="btn border button">Cancel</button> </div>
-        </div>
+            <input type="text" id="defaultRegisterFormFirstName" class="form-control mb-3" placeholder="First name">
+
+            <input type="text" id="defaultRegisterFormLastName" class="form-control mb-3" placeholder="Last name">
+
+            <input type="email" id="defaultRegisterFormEmail" class="form-control mb-3" placeholder="E-mail">
+
+            <input type="text" id="defaultRegisterPhonePassword" class="form-control mb-3" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+
+            <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-3">Optional</small>
+
+            <button class="btn btn-info my-4 btn-block" type="submit">Confirm</button>
+
+        </form>
     </div>
 {% endblock %}

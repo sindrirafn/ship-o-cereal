@@ -1,9 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <div class="cereal">
-        <h2> Checkout Page </h2>
-    </div>
-    <div>
-        <a href="#" class="btn btn-outline-secondary my-2 my-sm-0">Proceed</a>
-    </div>
+    <link rel="stylesheet" href="{% static "css/checkout.css" %}">
+        <div class="wrapper">
+            <h4 class="text-uppercase">Payment Details</h4>
+            <form class="form mt-4">
+                <div class="form-group"> <label for="name" class="text-uppercase">Name on the card</label> <input type="text" class="form-control" placeholder="Full name"> </div>
+                <div class="form-group"> <label for="card" class="text-uppercase">Card number</label>
+                    <div class="card-number"> <input type="text" class="card-no" step="4" placeholder="#### #### #### ####" pattern="^[0-9].{15,}"> </div>
+                </div>
+                <div class="d-flex w-100">
+                    <div class="d-flex w-50 pr-sm-4">
+                        <div class="form-group"> <label for="expiry" class="text-uppercase">exp.date</label> <input type="text" class="form-control" placeholder="DD/YYYY"> </div>
+                    </div>
+                    <div class="d-flex w-50 pl-sm-5 pl-3">
+                        <div class="form-group"> <label for="CVC" class="text-uppercase">CVC</label> <a href="#" data-toggle="tooltip" title="CVC is a credit or debit card number, the last three digit number printed on the signature panel"> &ensp; What's this</a> <input type="password" class="form-control pr-5" maxlength="3" placeholder="###"> </div>
+                    </div>
+                </div>
+                <div><a href="#" class="btn btn-success my-2 btn-block">Place order</a></div>
+                <div><a href="{% url 'cart-index' %}" class="btn btn-primary btn-block">Cancel</a></div>
+                <div id="form-footer">
+                    <p>By placing your order, you agree to our</p>
+                    <p><a href="#">privacy notice</a> & <a href="#">terms of use</a>.</p>
+                </div>
+            </form>
+        </div>
+    <link>
 {% endblock %}
