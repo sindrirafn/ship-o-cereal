@@ -10,7 +10,12 @@ from cereal.models import Cereal
 # ]
 
 def index(request):
-    return render(request, 'cereal/index.html', context={'cereals': Cereal.objects.all().order_by('name')})
+    if 'orderBy' in request.GET:
+        orderParameter = request.GET['orderBy']
+        context = {'cereals': Cereal.objects.all().order_by(orderParameter)}
+    else:
+        context = {'cereals': Cereal.objects.all().order_by('name')}
+    return render(request, 'cereal/index.html', context)
 
 def cereal_by_id(request, id):
     return render(request, 'cereal/single_product.html', {
