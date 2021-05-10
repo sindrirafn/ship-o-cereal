@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <div class="col mb-4">
     <div class="card shadow">
 
@@ -22,10 +21,9 @@
             <h5 class="card-title">{{ product.price }} ISK</h5>
             <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 <!--            <button type="button" class="btn btn-light-blue btn-md">Read more</button>-->
-            <a href="{% url 'cereal-item' %}" class="btn btn-primary">More info</a>
+            <a href="{% url 'cereal-item' %}" class="btn btn-primary">Info</a>
             <a href="#" class="btn btn-primary btn-inline">+Cart</a>
-
+            <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
         </div>
-
     </div>
 </div>

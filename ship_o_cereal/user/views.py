@@ -6,3 +6,6 @@ def index(request):
 
 def item(request):
     return render(request, 'user/edit_profile.html')
+
+def wish(request):
+    return render(request, 'user/wishlist.html')
