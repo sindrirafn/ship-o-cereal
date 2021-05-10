@@ -12,7 +12,7 @@ class Cereal(models.Model):
     description = models.CharField(max_length=255, blank = True)
     price = models.FloatField()
     category = models.ForeignKey(CerealCategory, on_delete=models.CASCADE)
-    #manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    manufacturer = models.CharField(max_length=255)
 
 
 class CerealImage(models.Model):
