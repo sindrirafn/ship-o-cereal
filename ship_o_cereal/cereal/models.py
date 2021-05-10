@@ -9,10 +9,11 @@ class CerealCategory(models.Model):
 
 class Cereal(models.Model):
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255, blank = True)
+    description = models.CharField(max_length=999, blank = True)
     price = models.FloatField()
+    manufacturer = models.CharField(max_length=200, blank = True)
     category = models.ForeignKey(CerealCategory, on_delete=models.CASCADE)
-    manufacturer = models.CharField(max_length=255)
+
 
 
 class CerealImage(models.Model):
