@@ -7,6 +7,24 @@
 
 
 </div>
+<div class="card shadow">
 
+        <img class="card-img-top p-3" src="{% static 'images/'|add:product.name|add:'.jpeg' %}"
+             alt="{{ product.name }}">
+
+    <div class="card-body">
+        <!--Title-->
+        <h4 class="card-title">{{ product.name }}</h4>
+        <!--Text-->
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+            card's content.</p>
+        <!--Price-->
+        <h5 class="card-title">{{ product.price }} ISK</h5>
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <!--            <button type="button" class="btn btn-light-blue btn-md">Read more</button>-->
+        <a href="#" class="btn btn-primary btn-inline">+Cart</a>
+        <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
+    </div>
+</div>
 
 {% endblock %}
