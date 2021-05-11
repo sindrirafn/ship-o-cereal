@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from cereal.models import Cereal
 from merch.models import Product
@@ -21,4 +21,9 @@ def register(request):
             return redirect('login-index')
     return render(request, 'front_page/register.html', {
         'form': UserCreationForm()
+    })
+
+def product_by_name(request, name):
+    return render(request, 'products/single_product.html', {
+        'product': get_object_or_404(Cereal, name=name)
     })

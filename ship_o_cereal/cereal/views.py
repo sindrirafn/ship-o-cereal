@@ -12,7 +12,12 @@ def index(request):
 
     return render(request, 'cereal/index.html', context)
 
-def cereal_by_id(request, id):
+# def cereal_by_id(request, id):
+#     return render(request, 'products/single_product.html', {
+#         'product': get_object_or_404(Cereal, pk=id)
+#     })
+
+def cereal_by_name(request, name):
     return render(request, 'products/single_product.html', {
-        'product': get_object_or_404(Cereal, pk=id)
+        'product': get_object_or_404(Cereal, name=name)
     })

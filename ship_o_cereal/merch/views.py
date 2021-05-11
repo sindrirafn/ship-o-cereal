@@ -16,3 +16,8 @@ def merch_by_id(request, id):
     return render(request, 'products/single_product.html', {
         'product': get_object_or_404(Product, pk=id)
     })
+
+def merch_by_name(request, name):
+    return render(request, 'products/single_product.html', {
+        'product': get_object_or_404(Product, name=name)
+    })
