@@ -23,6 +23,6 @@ def index(request):
     return render(request, 'cereal/index.html', context)
 
 def cereal_by_id(request, id):
-    return render(request, 'cereal/single_product.html', {
+    return render(request, 'products/single_product.html', {
         'product': get_object_or_404(Cereal, pk=id)
     })

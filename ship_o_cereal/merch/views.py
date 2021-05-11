@@ -13,6 +13,6 @@ def index(request):
     return render(request, 'merch/index.html', context={'merch': merch})
 
 def merch_by_id(request, id):
-    return render(request, 'cereal/single_product.html', {
+    return render(request, 'products/single_product.html', {
         'product': get_object_or_404(Product, pk=id)
     })
