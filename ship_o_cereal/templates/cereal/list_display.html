@@ -4,7 +4,7 @@
     <div class="card shadow">
 
         <a href="{{ product.id }}"> {#ATH breyta thessu urli#}
-            <img class="card-img-top p-3" src="{% static 'images/'|add:product.name|add:'.jpeg' %}"
+            <img class="card-img-top p-3" src="{{ cereal.cerealimage_set.first.image }}"
                  alt="{{ product.name }}">
 
         </a>

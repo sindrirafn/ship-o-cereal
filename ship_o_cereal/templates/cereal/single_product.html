@@ -9,8 +9,10 @@
 </div>
 <div class="card shadow">
 
-        <img class="card-img-top p-3" src="{% static 'images/'|add:product.name|add:'.jpeg' %}"
+        <img class="card-img-top p-3" src="{{ product.cerealimage_set.first.image }}"
              alt="{{ product.name }}">
+        <img class="card-img-top p-3" src="{{ product.cerealimage_set.last.image }}"
+                 alt="{{ product.name }}">
 
     <div class="card-body">
         <!--Title-->

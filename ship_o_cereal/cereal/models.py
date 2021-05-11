@@ -15,7 +15,6 @@ class Cereal(models.Model):
     category = models.ForeignKey(CerealCategory, on_delete=models.CASCADE)
 
 
-
 class CerealImage(models.Model):
     image = models.CharField(max_length=9999)
     cereal = models.ForeignKey(Cereal, on_delete=models.CASCADE)

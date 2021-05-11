@@ -13,7 +13,7 @@
     <div class="row row-cols-1 row-cols-md-3 w-75">
 
         {% for product in cereals %}
-        {% include "cereal/list_display.html" %}
+        {% include "cereal/list_display.html"  with cereal=product%}
 
         {% endfor %}
     </div>
