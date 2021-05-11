@@ -18,3 +18,8 @@ class Cereal(models.Model):
 class CerealImage(models.Model):
     image = models.CharField(max_length=9999)
     cereal = models.ForeignKey(Cereal, on_delete=models.CASCADE)
+
+class CerealInfo(models.Model):
+    longDescription = models.CharField(max_length=999)
+    nutritionalValue = models.CharField(max_length=999)
+    cereal = models.ForeignKey(Cereal, on_delete=models.CASCADE)
