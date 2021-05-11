@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <form method="post" class="form form-horizontal">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="btn btn-primary" value="login" />
+    </form>
 
-<form class="border border-light p-5">
+<!-- <form class="border border-light p-5">
 
     <p class="h4 mb-4 text-center">Sign in</p>
 
@@ -26,11 +31,11 @@
 
     <div class="text-center">
         <p>Not a member?
-            <a href="{% url 'register-index' %}">Register</a>
+            <a href="#">Register</a>
         </p>
 
 
     </div>
-</form>
+</form> -->
 
 {% endblock %}
