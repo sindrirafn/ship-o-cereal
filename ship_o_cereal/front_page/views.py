@@ -2,8 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from cereal.models import Cereal
-from merch.models import Product
+from cereal.models import Product
 
 # Create your views here.
 def index(request):
@@ -13,7 +12,7 @@ def index(request):
 
 
     else:
-        results = Cereal.objects
+        results = Product.objects
         if 'searchStr' in request.GET:
             searchParameter = request.GET['searchStr']
             results = results.filter(name__icontains=searchParameter).order_by('name')
@@ -41,7 +40,7 @@ def register(request):
 
 def product_by_name(request, name):
     return render(request, 'products/single_product.html', {
-        'product': get_object_or_404(Cereal, name=name)
+        'product': get_object_or_404(Product, name=name)
     })
 
 # def filter_by_manufacturer(request, manufacturer):

@@ -1,5 +1,5 @@
 from django.db import models
-from cereal.models import Cereal
+from cereal.models import Product
 from django.db.models.signals import post_save
 
 # Create your models here.
@@ -9,7 +9,7 @@ class User(models.Model):
     firstName = models.CharField(max_length=255)
     lastName = models.CharField(max_length=255)
     userName = models.CharField(max_length=255)
-    cereal = models.ForeignKey(Cereal, on_delete=models.CASCADE)
+    cereal = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
 class UserImage(models.Model):
@@ -18,7 +18,7 @@ class UserImage(models.Model):
 
 
 class SearchHistory(models.Model):
-    item = models.ForeignKey(Cereal, on_delete=models.CASCADE)
+    item = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
