@@ -10,8 +10,6 @@ def index(request):
 
 
 
-
-
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(data=request.POST)

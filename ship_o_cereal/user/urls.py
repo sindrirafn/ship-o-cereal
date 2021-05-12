@@ -1,5 +1,7 @@
 from django.urls import path
-from user import views
+from django.contrib.auth.views import LoginView, LogoutView
+from . import views
+
 urlpatterns = [
     # http://localhost:8000/users
     path('', views.profile, name="profile-index"),
@@ -7,3 +9,4 @@ urlpatterns = [
     path('wishlist', views.wish, name="user-wishlist"),
 
 ]
+

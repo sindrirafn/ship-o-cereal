@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import TheProfileForm
-from django.http import HttpResponse
-# Create your views here.
 
 
 def index(request):
@@ -27,5 +26,5 @@ def profile(request):
             profile.save()
             return redirect('profile')
     return render(request, 'user/index.html', {
-        'form': TheProfileForm(instanec=profile)
+        'form': TheProfileForm(instance=profile)
     })
