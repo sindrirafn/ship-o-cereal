@@ -3,10 +3,17 @@
 {% block content %}
     <div class="d-flex flex-row justify-content-between mt-3 mb-1">
         <div class="pl-2">
-            <form class="form-inline" action="">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchStr">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+{#            <div class="input-group">#}
+{#            <form class="form-inline" action="">#}
+            <form class="form-inline">
+{#                <input class="form-control mr-sm-2" type="search" id="search-box" placeholder="Search" aria-label="Search" name="searchStr">#}
+{#                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn">Search</button>#}
+                <input class="form-control mr-sm-2" type="search" id="search-box" placeholder="Search" aria-label="Search">
+{#                <div class="input-group-btn">#}
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="search-btn">Search</button>
+{#                </div>#}
             </form>
+            </div>
         </div>
 
         <div class="m-2 align-middle">
@@ -36,32 +43,53 @@
 {#    </div>#}
 {#</div>#}
 
-<div class="d-inline-flex justify-content-between py-3">
-    {% if products %}
-        <div class="row row-cols-1 row-cols-md-3 w-75">
+<div class="d-inline-flex justify-content-between w-100 p-5">
+{#    #}
+        <div class="row row-cols-1 row-cols-md-3 w-75 products">
+
             {% for product in products %}
-                {% include "products/list_display.html" %}
+                {% include "products/list_display.html" with product=product %}
             {% endfor %}
+
         </div>
+
         <div class="w-20">
 
             <h1>Filter Area</h1>
             <h2>Price</h2>
             <h2>Brand</h2>
-            {% regroup products|dictsort:"brand" by brand as brands %}
+{#            {% regroup products|dictsort:"brand" by brand as brands %}#}
 
 
             <div class="mb-5">
 
                 <h5 class="font-weight-bold mb-3">Category</h5>
+                <form action=" ">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="brand1" name="filterBy" value="Kelloggs">
+                        <label class="custom-control-label" for="brand1">Kelloggs</label>
+                    </div>
+{#                    <div class="btn-group">#}
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="brand2" name="orderBy" value="name" checked>
+                            <label class="form-check-label" for="brand2">name</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="brand3" name="orderBy" value="price">
+                            <label class="form-check-label" for="brand3">price</label>
+                        </div>
+{#                    </div>#}
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
 
                 <div class="divider-small mb-3">
                     <form action="">
-                        {% for brand in brands %}
+                        {% for brand in brandNames %}
                             <div class="form-check pl-0 mb-2" >
 
-                              <input type="radio" class="form-check-input" id="materialGroupExample1" href=" " name="filterBy" value="{{ brand.grouper }}">
-                              <label class="form-check-label" for="materialGroupExample1">{{ brand.grouper }}</label>
+                              <input type="radio" class="form-check-input" id="materialGroupExample1" name="filterBy" value="{{ brand.brand }}">
+                              <label class="form-check-label" for="materialGroupExample1">{{ brand.brand }}</label>
                             </div>
                         {% endfor %}
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -69,9 +97,9 @@
                 </div>
                 <h2>Category</h2>
             </div>
-    {% else %}
-        <h3>Your search matched no products</h3>
-    {% endif %}
+{#    {% else %}#}
+{#        <h3>Your search matched no products</h3>#}
+{#    {% endif %}#}
 </div>
 
 {% endblock %}
