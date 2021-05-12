@@ -15,7 +15,7 @@ from cereal.models import Product
 def index(request):
 
     if 'searchStr' not in request.GET and 'filterBy' not in request.GET:
-        return render(request, 'cereal/index.html')
+        return render(request, 'cereal/index.html', context = {'products': Product.objects.all().order_by('name') })
 
     else:
         results = Product.objects
