@@ -7,12 +7,25 @@ from merch.models import Product
 
 # Create your views here.
 def index(request):
-    if 'searchStr' in request.GET:
-        searchParameter = request.GET['searchStr']
-        context = {'cereals': Cereal.objects.filter(name__icontains=searchParameter).order_by('name')}
-        return render(request, 'products/search_results.html', context)
-    else:
+
+    if 'searchStr' not in request.GET and 'filterBy' not in request.GET:
         return render(request, 'front_page/index.html')
+
+
+    else:
+        results = Cereal.objects
+        if 'searchStr' in request.GET:
+            searchParameter = request.GET['searchStr']
+            results = results.filter(name__icontains=searchParameter).order_by('name')
+        if 'filterBy' in request.GET:
+            filterParameter = request.GET['filterBy']
+            results = results.filter(manufacturer=filterParameter).order_by('name')
+        # context = {'products': Cereal.objects.filter(name__icontains=searchParameter).order_by('name')}
+        # brands = results.distinct('manufacturer').order_by('manufacturer')
+        # context = {'products': results, 'brands': brands}
+        context = {'products': results}
+        return render(request, 'products/search_results.html', context)
+
 
 
 def register(request):
@@ -30,3 +43,6 @@ def product_by_name(request, name):
     return render(request, 'products/single_product.html', {
         'product': get_object_or_404(Cereal, name=name)
     })
+
+# def filter_by_manufacturer(request, manufacturer):
+#     manufacturer = request.GET['brand']

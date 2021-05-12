@@ -6,9 +6,9 @@ from cereal.models import Cereal
 def index(request):
     if 'orderBy' in request.GET:
         orderParameter = request.GET['orderBy']
-        context = {'cereals': Cereal.objects.all().order_by(orderParameter)}
+        context = {'products': Cereal.objects.all().order_by(orderParameter)}
     else:
-        context = {'cereals': Cereal.objects.all().order_by('name')}
+        context = {'products': Cereal.objects.all().order_by('name')}
 
     return render(request, 'cereal/index.html', context)
 
