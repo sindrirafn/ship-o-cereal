@@ -3,7 +3,7 @@
 {% block content %}
     <div class="d-flex flex-row justify-content-between mt-3 mb-1">
         <div class="pl-2">
-            <form class="form-inline" action="{% url 'frontpage-index' %}">
+            <form class="form-inline" action="">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchStr">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
@@ -55,17 +55,20 @@
 
                 <h5 class="font-weight-bold mb-3">Category</h5>
 
-                <div class="divider-small mb-3"></div>
-                {% for brand in brands %}
-                    <div class="form-check pl-0 mb-2" >
-                      <input type="radio" class="form-check-input" id="materialGroupExample1" href=" " name="filterBy" ">
-                      <label class="form-check-label" for="materialGroupExample1">{{ brand.grouper }}</label>
-                    </div>
-                {% endfor %}
+                <div class="divider-small mb-3">
+                    <form action="">
+                        {% for brand in brands %}
+                            <div class="form-check pl-0 mb-2" >
 
+                              <input type="radio" class="form-check-input" id="materialGroupExample1" href=" " name="filterBy" value="{{ brand.grouper }}">
+                              <label class="form-check-label" for="materialGroupExample1">{{ brand.grouper }}</label>
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <h2>Category</h2>
             </div>
-            <h2>Category</h2>
-        </div>
     {% else %}
         <h3>Your search matched no products</h3>
     {% endif %}
