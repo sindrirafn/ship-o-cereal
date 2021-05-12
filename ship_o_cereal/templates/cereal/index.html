@@ -48,7 +48,7 @@
             <h1>Filter Area</h1>
             <h2>Price</h2>
             <h2>Brand</h2>
-            {% regroup products|dictsort:"manufacturer" by manufacturer as brands %}
+            {% regroup products|dictsort:"brand" by brand as brands %}
 
 
             <div class="mb-5">
