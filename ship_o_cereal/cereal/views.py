@@ -17,7 +17,6 @@ def index(request):
     if 'searchStr' not in request.GET and 'filterBy' not in request.GET:
         return render(request, 'cereal/index.html')
 
-
     else:
         results = Product.objects
         if 'searchStr' in request.GET:
