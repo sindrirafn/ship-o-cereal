@@ -37,3 +37,10 @@ def product_by_name(request, name):
     return render(request, 'products/single_product.html', {
         'product': get_object_or_404(Product, name=name)
     })
+
+def create_candy(request):
+    if request.method =='POST':
+        return 1
+    else:
+        print(2)
+    return render(request, 'cereal/create_cereal.html')
