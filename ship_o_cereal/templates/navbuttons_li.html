@@ -1,6 +1,6 @@
 <div class="d-flex btn-group" role="group" aria-label="Basic example">
     {% if user.is_authenticated %}
-        <a href="{% url 'user-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Profile</a>
+        <a href="{% url 'profile-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Profile</a>
         <a href="{% url 'logout-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Log out</a>
     {% else %}
         {% include 'navbuttons_lo.html' %}

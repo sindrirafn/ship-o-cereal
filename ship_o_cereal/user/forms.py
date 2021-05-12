@@ -1,10 +1,13 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm, widgets
-from .models import UserProfile
+from .models import Profile
 
 
 class TheProfileForm(ModelForm):
     class Meta:
-        model = UserProfile
+        model = Profile
         exclude = ['id', 'user']
+        widgets = {
+            'profile_img' : widgets.TextInput(attrs={'class': 'form-control'})
+        }
