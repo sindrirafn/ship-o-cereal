@@ -45,7 +45,12 @@
           <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
           <div class="row">
             <div class="col-sm-12 form-group">
-              <a href="#" onclick="ClearFields()" class="btn btn-outline-primary my-2 my-sm-0 contact-btn">Submit</a>
+                {% if user.is_authenticated %}
+                    <a href="#" onclick="ClearFields()" class="btn btn-outline-primary my-2 my-sm-0 contact-btn">Submit</a>
+                {% else %}
+                    <a href="#" class="btn btn-outline-primary my-2 my-sm-0 disabled contact-btn">Log in to submit!</a>
+                {% endif %}
+
             </div>
           </div>
         </div>

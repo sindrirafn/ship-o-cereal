@@ -1,1 +1,0 @@
-console.log('Ship O Cereal');
