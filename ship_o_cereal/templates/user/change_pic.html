@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <br>
+    <div class="container">
+        <img src="{{ user.Profile.profile_img }}" class="rounded-circle w-25 p-3">
+    </div>
+    <br>
+    <form class="form form-horizontal" method="post">
+        {% csrf_token %}
+        <tr><th><label for="id_profile_img">Please paste image url:</label></th><br><td><input type="text" name="profile_img" value="https://www.dv.is/wp-content/uploads/2019/03/%C3%81st%C3%BE%C3%B3r-Magn%C3%BAsson.jpg" class="form-control" maxlength="9999" required id="id_profile_img"></td></tr><br>
+        <input type="submit" class="btn btn-info btn-block my-4" value="Save changes" />
+    </form>
+
+{% endblock %}
