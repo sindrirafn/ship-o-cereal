@@ -1,47 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<!--Carousel Wrapper-->
-<br>
-<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-    </ol>
-    <!--/.Indicators-->
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox">
-        <!--First slide-->
-        <div class="carousel-item active">
-            <img class="d-block w-100 rounded-pill" src="https://mdbootstrap.com/img/Photos/Slides/img%20(151).jpg"
-                 alt="First slide">
-        </div>
-        <!--/First slide-->
-        <!--Second slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100 rounded-pill" src="https://mdbootstrap.com/img/Photos/Slides/img%20(12).jpg"
-                 alt="Second slide">
-        </div>
-        <!--/Second slide-->
-        <!--Third slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100 rounded-pill" src="https://mdbootstrap.com/img/Photos/Slides/img%20(59).jpg"
-                 alt="Third slide">
-        </div>
-        <!--/Third slide-->
+
+    <div class="jumbotron bg-white transparent pb-5">
+        <h2 class="display-4">Welcome to Ship O' Cereal</h2>
+        <p class="lead">Your one stop shop for all things cereal!</p>
     </div>
-    <!--/.Slides-->
-    <!--Controls-->
-    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-    <!--/.Controls-->
-</div>
-<!--/.Carousel Wrapper-->
+    <div class="jumbotron bg-white transparent pb-5">
+        <a href="{% url 'products-index' %}" class="text-decoration-none text-body">
+            <h4 class="display-5">
+                Check out our amazing product catalogue! <i class="fas fa-arrow-right"></i>
+            </h4>
+        </a>
+    </div>
+
 {% endblock %}
