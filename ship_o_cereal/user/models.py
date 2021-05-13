@@ -7,8 +7,12 @@ from django.contrib.auth.models import User
 
 
 class SearchHistory(models.Model):
-    item = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class SearchedItem(models.Model):
+    searchHistory = models.ForeignKey(SearchHistory, on_delete=models.SET_NULL, blank=True, null=True)
+    searchItem = models.CharField(max_length=255, null=True, blank=True)
 
 
 class Profile(models.Model):
