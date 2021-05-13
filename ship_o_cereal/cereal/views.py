@@ -44,6 +44,36 @@ def index(request):
             'firstImage': x.cerealimage_set.first().image
         } for x in Product.objects.filter(name__icontains=searchParameter)]
         return JsonResponse({'data': results})
+    if 'orderBy' in request.GET:
+        orderBy = request.GET['orderBy']
+        results = [{
+            'id': x.id,
+            'name': x.name,
+            'price': x.price,
+            'description': x.description,
+            'firstImage': x.cerealimage_set.first().image
+        } for x in Product.objects.all().order_by(orderBy) ]
+        return JsonResponse({'data': results})
+    if 'brand-filter' in request.GET:
+        brandFilter = request.GET['brand-filter']
+        results = [{
+            'id': x.id,
+            'name': x.name,
+            'price': x.price,
+            'description': x.description,
+            'firstImage': x.cerealimage_set.first().image
+        } for x in Product.objects.filter(brand=brandFilter).order_by('name')]
+        return JsonResponse({'data': results})
+    if 'category-filter' in request.GET:
+        categoryFilter = request.GET['category-filter']
+        results = [{
+            'id': x.id,
+            'name': x.name,
+            'price': x.price,
+            'description': x.description,
+            'firstImage': x.cerealimage_set.first().image
+        } for x in Product.objects.filter(tags__icontains=categoryFilter).order_by('name')]
+        return JsonResponse({'data': results})
     context = {'products': Product.objects.all().order_by('name'), 'brandNames': brandNames}
     return render(request, 'cereal/index.html', context)
 

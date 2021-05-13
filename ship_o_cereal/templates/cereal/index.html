@@ -3,48 +3,38 @@
 {% block content %}
     <div class="d-flex flex-row justify-content-between mt-3 mb-1">
         <div class="pl-2">
-{#            <div class="input-group">#}
-{#            <form class="form-inline" action="">#}
             <form class="form-inline">
-{#                <input class="form-control mr-sm-2" type="search" id="search-box" placeholder="Search" aria-label="Search" name="searchStr">#}
-{#                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn">Search</button>#}
-                <input class="form-control mr-sm-2" type="search" id="search-box" placeholder="Search" aria-label="Search">
-{#                <div class="input-group-btn">#}
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="search-btn">Search</button>
-{#                </div>#}
+                <input class="form-control mr-sm-2" type="search" id="search-box" placeholder="Search" aria-label="Search" name="searchStr">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn">Search</button>
             </form>
+
+        </div>
+
+        <div class="d-inline-flex align-middle">
+            <div class="align-content-middle pr-2">
+                <p>Order by:</p>
             </div>
+
+            <div class="btn-group-inline btn-group-toggle btn-group-sm" id="orderBy-btn-group" data-toggle="buttons">
+                <label class="btn btn-primary form-check-label active">
+                    <input class="form-check-input" type="radio" name="order-by" id="orderBy-btn" autocomplete="off" checked value="name">
+                    Name
+                </label>
+                <label class="btn btn-primary form-check-label">
+                    <input class="form-check-input" type="radio" name="order-by" id="orderBy-btn" autocomplete="off" value="price"> Price (lowest first)
+                </label>
+                <label class="btn btn-primary form-check-label">
+                    <input class="form-check-input" type="radio" name="order-by" id="orderBy-btn" autocomplete="off" value="-price"> Price (highest first)
+                </label>
+            </div>
+
         </div>
 
-        <div class="m-2 align-middle">
-            <p>Order by:
-                <a href="?orderBy=name">Name</a>,
-                <a href="?orderBy=price">Price (lowest first)</a>,
-                <a href="?orderBy=-price">Price (highest first)</a>
-            </p>
-        </div>
+    </div>
 
-</div>
 
-{#<div class="d-inline-flex justify-content-between py-3">#}
-{#    <div class="row row-cols-1 row-cols-md-3 w-75">#}
-{##}
-{#        {% for product in cereals %}#}
-{#        {% include "products/list_display.html" %}#}
-{##}
-{#        {% endfor %}#}
-{#    </div>#}
-{#    <div class="w-20">#}
-{##}
-{#        <h1>Filter Area</h1>#}
-{#        <h2>Price</h2>#}
-{#        <h2>Something</h2>#}
-{#        <h2>Something else</h2>#}
-{#    </div>#}
-{#</div>#}
-
-<div class="d-inline-flex justify-content-between w-100 p-5">
-{#    #}
+    <div class="d-inline-flex justify-content-between w-100 p-2">
+        {#    #}
         <div class="row row-cols-1 row-cols-md-3 w-75 products">
 
             {% for product in products %}
@@ -56,51 +46,65 @@
         <div class="w-20">
 
             <h1>Filter Area</h1>
-            <h2>Price</h2>
+
             <h2>Brand</h2>
-{#            {% regroup products|dictsort:"brand" by brand as brands %}#}
 
-
-            <div class="mb-5">
-
-                <h5 class="font-weight-bold mb-3">Category</h5>
-                <form action=" ">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="brand1" name="filterBy" value="Kelloggs">
-                        <label class="custom-control-label" for="brand1">Kelloggs</label>
-                    </div>
-{#                    <div class="btn-group">#}
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" id="brand2" name="orderBy" value="name" checked>
-                            <label class="form-check-label" for="brand2">name</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" id="brand3" name="orderBy" value="price">
-                            <label class="form-check-label" for="brand3">price</label>
-                        </div>
-{#                    </div>#}
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-
-                <div class="divider-small mb-3">
-                    <form action="">
-                        {% for brand in brandNames %}
-                            <div class="form-check pl-0 mb-2" >
-
-                              <input type="radio" class="form-check-input" id="materialGroupExample1" name="filterBy" value="{{ brand.brand }}">
-                              <label class="form-check-label" for="materialGroupExample1">{{ brand.brand }}</label>
-                            </div>
-                        {% endfor %}
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+            <div class="d-flex flex-column btn-group btn-group-toggle" id="brand-btn-group" data-toggle="radio">
+                <div class="form-check">
+                    <label class="radio form-check-label active">
+                        <input class="form-check-input" type="radio" name="brand-filter" id="brand-filter-all" autocomplete="off" checked value="">
+                        All
+                    </label>
                 </div>
-                <h2>Category</h2>
+                {% for brand in brandNames %}
+                    <div class="form-check">
+                        <label class="radio form-check-label">
+                            <input class="form-check-input" type="radio" name="brand-filter" id="brand-filter-btn" autocomplete="off" value="{{ brand.brand }}">
+                            {{ brand.brand }}
+                        </label>
+                    </div>
+                {% endfor %}
             </div>
-{#    {% else %}#}
-{#        <h3>Your search matched no products</h3>#}
-{#    {% endif %}#}
-</div>
+
+            <h2>Category</h2>
+            <div class="d-flex flex-column btn-group btn-group-toggle" id="category-btn-group" data-toggle="">
+                <div class="form-check">
+                    <label class="form-check-label active">
+                        <input class="form-check-input" type="radio" name="cat-btn" id="cat-btn" autocomplete="off" checked value="">
+                        All
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="cat-btn" id="cat-btn" autocomplete="off" value="Cereal">
+                        Cereal
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="cat-btn" id="cat-btn" autocomplete="off" value="Merch"> Merch
+                    </label>
+                </div>
+            </div>
+{#            <div class="btn-group-vertical btn-group-toggle" id="category-btn-group" data-toggle="">#}
+{##}
+{#                    <label class="radio form-check-label active">#}
+{#                        <input class="form-check-input" type="radio" name="cat-btn" id="cat-btn" autocomplete="off" checked value="Cereal">#}
+{#                        Cereal#}
+{#                    </label>#}
+{##}
+{#                    <label class="radio form-check-label">#}
+{#                        <input class="form-check-input" type="radio" name="cat-btn" id="cat-btn" autocomplete="off" value="Merch"> Merch#}
+{#                    </label>#}
+{##}
+{#            </div>#}
+{#            <form>#}
+{#                <input type="radio" name="cat-btn" id="category-all" checked value="">All<br>#}
+{#                <input type="radio" name="cat-btn" id="category-filter"  value="Cereal">Cereal<br>#}
+{#                <input type="radio" name="cat-btn" id="category-filter" value="Merch">Merch#}
+{#            </form>#}
+        </div>
+
+    </div>
 
 {% endblock %}
-
