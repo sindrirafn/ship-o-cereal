@@ -1,32 +1,22 @@
-// var list_disp =
-//     `<div class="col mb-4">
-//     <div class="card shadow">
-//
-//         <a href="/products/${d.name}">
-//             <img class="card-img-top p-3 list_img" src="${d.firstImage}"
-//                  alt="${d.name}">
-//
-//         </a>
-//
-// <!--        <img src="{% static 'images/'|add:product.name|add:'.jpeg' %}" class="card-img-top p-3" alt="{{ product.name }}">-->
-//         <!--Card content-->
-//         <div class="card-body">
-//             <!--Title-->
-//             <h4 class="card-title">${d.name}</h4>
-//             <!--Text-->
-//             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-//                 card's content.</p>
-//             <!--Price-->
-//             <h5 class="card-title">${d.price} ISK</h5>
-//             <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-// <!--            <button type="button" class="btn btn-light-blue btn-md">Read more</button>-->
-//             <a href="/products/${d.name}" class="btn btn-primary">Info</a>
-//             <a class="btn btn-primary btn-inline" onclick="console.log(${d.id})">+Cart</a>
-//             <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
-//         </div>
-//     </div>
-// </div>`;
-//
+function list_disp(x) {
+    return `<div class="col mb-4">
+            <div class="card shadow">     
+                <a href="/products/${x.name}">
+                    <img class="card-img-top p-3 list_img" src="${x.firstImage}"
+                         alt="${x.name}">   
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">${x.name}</h4>
+                    <p class="card-text">${x.description}</p>
+                    <!--Price-->
+                    <h5 class="card-title">${x.price} ISK</h5>
+                    <a href="/products/${x.name}" class="btn btn-primary">Info</a>
+                    <a data-product="${x.id}" data-action="add" class="btn btn-primary btn-inline update-cart" >+Cart</a>
+                    <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
+                </div>
+            </div>
+        </div>`
+        }
 
 // let content;
 //
@@ -53,26 +43,11 @@ $(document).ready(function() {
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
-                    return `<div class="col mb-4">
-                                <div class="card shadow">                           
-                                    <a href="/products/${d.name}">
-                                        <img class="card-img-top p-3 list_img" src="${d.firstImage}"
-                                             alt="${d.name}">
-                                    </a>
-                                    <div class="card-body">
-                                        <h4 class="card-title">${d.name}</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                            card's content.</p>
-                                        <h5 class="card-title">${d.price} ISK</h5>
-                                        <a href="/products/${d.name}" class="btn btn-primary">Info</a>
-                                        <a class="btn btn-primary btn-inline" onclick="console.log(${d.id})">+Cart</a>
-                                        <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
-                                    </div>
-                                </div>
-                            </div>`
+                    return list_disp(d)
                 });
                 $('.products').html(newHtml.join(''));
                 $('#search-box').val('');
+                updateCartButtons();
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -82,6 +57,8 @@ $(document).ready(function() {
 
     });
 });
+
+
 
 var input = document.getElementById("search-box");
 
@@ -107,25 +84,10 @@ $(document).ready(function() {
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
-                    return `<div class="col mb-4">
-                                <div class="card shadow">                           
-                                    <a href="/products/${d.name}">
-                                        <img class="card-img-top p-3 list_img" src="${d.firstImage}"
-                                             alt="${d.name}">
-                                    </a>
-                                    <div class="card-body">
-                                        <h4 class="card-title">${d.name}</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                            card's content.</p>
-                                        <h5 class="card-title">${d.price} ISK</h5>
-                                        <a href="/products/${d.name}" class="btn btn-primary">Info</a>
-                                        <a class="btn btn-primary btn-inline" onclick="console.log(${d.id})">+Cart</a>
-                                        <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
-                                    </div>
-                                </div>
-                            </div>`
+                    return list_disp(d)
                 });
                 $('.products').html(newHtml.join(''));
+                updateCartButtons();
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -145,25 +107,10 @@ $(document).ready(function() {
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
-                    return `<div class="col mb-4">
-                                <div class="card shadow">                           
-                                    <a href="/products/${d.name}">
-                                        <img class="card-img-top p-3 list_img" src="${d.firstImage}"
-                                             alt="${d.name}">
-                                    </a>
-                                    <div class="card-body">
-                                        <h4 class="card-title">${d.name}</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                            card's content.</p>
-                                        <h5 class="card-title">${d.price} ISK</h5>
-                                        <a href="/products/${d.name}" class="btn btn-primary">Info</a>
-                                        <a class="btn btn-primary btn-inline" onclick="console.log(${d.id})">+Cart</a>
-                                        <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
-                                    </div>
-                                </div>
-                            </div>`
+                    return list_disp(d)
                 });
                 $('.products').html(newHtml.join(''));
+                updateCartButtons();
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -177,7 +124,6 @@ $(document).ready(function() {
 
 $(document).ready(function() {
         $("input:radio[name=cat-btn]").change(function(e) {
-            $("input:radio[id=brand-filter-all]").select();
             e.preventDefault();
             var category = $(this).val();
         $.ajax({
@@ -185,25 +131,10 @@ $(document).ready(function() {
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
-                    return `<div class="col mb-4">
-                                <div class="card shadow">                           
-                                    <a href="/products/${d.name}">
-                                        <img class="card-img-top p-3 list_img" src="${d.firstImage}"
-                                             alt="${d.name}">
-                                    </a>
-                                    <div class="card-body">
-                                        <h4 class="card-title">${d.name}</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                            card's content.</p>
-                                        <h5 class="card-title">${d.price} ISK</h5>
-                                        <a href="/products/${d.name}" class="btn btn-primary">Info</a>
-                                        <a class="btn btn-primary btn-inline" onclick="console.log(${d.id})">+Cart</a>
-                                        <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
-                                    </div>
-                                </div>
-                            </div>`
+                    return list_disp(d)
                 });
                 $('.products').html(newHtml.join(''));
+                updateCartButtons();
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -213,3 +144,4 @@ $(document).ready(function() {
     });
 
 });
+
