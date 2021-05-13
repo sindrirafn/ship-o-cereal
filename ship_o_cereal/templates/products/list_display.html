@@ -17,7 +17,7 @@
             <!--Text-->
             <p class="card-text">{{ product.description }}</p>
             <!--Price-->
-            <h5 class="card-title">{{ product.price }} ISK</h5>
+            <h5 class="card-title">{{ product.price|floatformat:0 }} ISK</h5>
             <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 <!--            <button type="button" class="btn btn-light-blue btn-md">Read more</button>-->
             <a href="{{ product.name }}" class="btn btn-primary">Info</a>
