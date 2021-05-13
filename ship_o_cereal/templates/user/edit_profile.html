@@ -2,25 +2,16 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="wrapper bg-white mt-sm-5">
-        <p class="h4 mb-4 text-center">Edit Profile</p>
-        <div class="d-flex align-items-center py-3"> <img src="{% static 'images/johnny.jpeg' %}" class="rounded-circle w-25 p-3" alt="Johnny">
-            <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-                <p>Accepted file type .png. Less than 1MB</p> <button class="btn btn-info my-4"><b>Change profile picture</b></button>
-            </div>
-        </div>
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control mb-3" placeholder="First name">
-
-            <input type="text" id="defaultRegisterFormLastName" class="form-control mb-3" placeholder="Last name">
-
-            <input type="email" id="defaultRegisterFormEmail" class="form-control mb-3" placeholder="E-mail">
-
-            <input type="text" id="defaultRegisterPhonePassword" class="form-control mb-3" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
-
-            <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-3">Optional</small>
-
-            <button class="btn btn-info my-4 btn-block" type="submit">Confirm</button>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <tr><th><label for="id_username">Username:</label></th><td><input type="text" name="username" value="{{ user.username }}" class="form-control" maxlength="150" required id="id_username"><span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></td></tr><br><br><br>
+            <tr><th><label for="id_first_name">First name:</label></th><td><input type="text" name="first_name" value="{{ user.first_name }}" class="form-control" maxlength="150" id="id_first_name"></td></tr><br>
+            <tr><th><label for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" value="{{ user.last_name }}" class="form-control" maxlength="150" id="id_last_name"></td></tr><br>
+            <tr><th><label for="id_email">Email address:</label></th><td><input type="text" name="email" value="{{ user.email }}" class="form-control" maxlength="254" id="id_email"></td></tr><br>
+            <input type="submit" class="btn btn-info btn-block my-4" value="Save changes" />
 
         </form>
     </div>
+
 {% endblock %}

@@ -6,9 +6,10 @@ from django.http import HttpResponse
 from cereal.models import Product
 
 # Create your views here.
+
+
 def index(request):
     return render(request, 'front_page/index.html')
-
 
 
 def register(request):

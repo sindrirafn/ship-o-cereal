@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <h1> Hello {{ user.username }}</h1>
+    <h1> Welcome to your profile {{ user.first_name }} {{ user.last_name }}!</h1>
     <form class="form form-horizontal" method="post">
         {% csrf_token %}
         {{ form }}
@@ -12,9 +12,10 @@
         <h2 class="pt-3"> User information </h2>
         <img src="{{ user.Profile.profile_img }}" class="rounded-circle w-25 p-3">
         <div class="d-inline-block">
-            <h1>Jón Jónsson</h1>
             <a href="{% url "user-edit" %}" class="btn btn-outline-secondary my-2 my-sm-0">Edit profile</a>
             <a href="{% url "user-wishlist" %}" class="btn btn-outline-danger my-2 my-sm-0">Wishlist</a>
+            <a href="{% url "change-pw" %}" class="btn btn-outline-secondary my-2 my-sm-0">Change password</a>
+            <a href="{% url "user-pic" %}" class="btn btn-outline-secondary my-2 my-sm-0">Change profile picture</a>
         </div>
 
     </div>
