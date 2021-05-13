@@ -20,34 +20,31 @@
                                 <th scope="col">Product</th>
                                 <th scope="col">Available</th>
                                 <th scope="col" class="text-center">Quantity</th>
-                                <th scope="col" class="text-right">Price</th>
+                                <th scope="col" class="text-center">Price</th>
+                                <th scope="col" class="text-right">Total</th>
                                 <th> </th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for item in items %}
                             <tr>
-                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                <td>Cocoa Puffs</td>
+                                <td><img src={{ item.product.image}}/> </td>
+                                <td>{{ item.product.name }}</td>
                                 <td>In stock</td>
-                                <td>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                      <option>1</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
-                                    </select>
-                                </td>
-                                <td class="text-right">420 ISK</td>
+                                <td> {{ item.count }}</td>
+                                <td class="text-center">{{ item.product.price }} ISK</td>
+                                <td class="text-right">{{ item.get_total }} ISK</td>
                                 <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                             </tr>
+                            {% endfor %}
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><strong>Total</strong></td>
-                                <td class="text-right"><strong>7389 ISK</strong></td>
+                                <td></td>
+                                <td class="text-right"><strong>Total</strong></td>
+                                <td class="text-right"><strong>{{ order.get_cart_total }} ISK</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -56,8 +53,8 @@
             <div class="col mb-2">
                 <div class="row">
                     <div class="col-sm-12  col-md-6">
-                        <a href="{% url 'merch-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Continue Shopping Merchandise</a>
-                        <a href="{% url 'cereal-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Continue Shopping Cereal</a>
+                        <a href="{% url 'products-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Continue Shopping Merchandise</a>
+                        <a href="{% url 'products-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Continue Shopping Cereal</a>
                     </div>
                     <div class="col-sm-12 col-md-6 text-right">
                         <a href="{% url 'checkout-contact' %}" class="btn btn-outline-success my-2 my-sm-0">Checkout</a>

@@ -24,7 +24,7 @@ def profile(request):
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
-            return redirect('profile')
+            return redirect('profile-index')
     return render(request, 'user/index.html', {
         'form': TheProfileForm(instance=profile)
     })

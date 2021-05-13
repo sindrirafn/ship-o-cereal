@@ -12,5 +12,10 @@ class SearchHistory(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='Profile', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, null = True)
+    email = models.CharField(max_length=255, null = True)
     profile_img = models.CharField(max_length=9999, default="https://img.icons8.com/material-rounded/200/000000/user.png")
+
+    def __str__(self):
+        return str(self.id)

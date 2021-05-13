@@ -1,6 +1,10 @@
-from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from cereal.models import Product
+from user.models import Profile
+from cart.models import Cart, CartItem
+from django.http import JsonResponse
+import json
+
 # Create your views here.
 
 
@@ -83,9 +87,31 @@ def product_by_name(request, name):
         'product': get_object_or_404(Product, name=name)
     })
 
-def create_candy(request):
+
+def create_cereal(request):
     if request.method =='POST':
         return 1
     else:
         print(2)
     return render(request, 'cereal/create_cereal.html')
+
+
+def updatecart(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    customer = request.user.Profile
+    product = Product.objects.get(id=productId)
+    cart, created = Cart.objects.get_or_create(customer=customer, complete=False)
+    cartItem, created = CartItem.objects.get_or_create(cart=cart, product=product)
+
+    if action == 'add':
+        cartItem.count = (cartItem.count +1)
+    elif action == 'remove':
+        cartItem.count = (cartItem.count -1)
+    cartItem.save()
+
+    if cartItem.count <= 0:
+        cartItem.delete()
+
+    return JsonResponse('Item was added', safe=False)
