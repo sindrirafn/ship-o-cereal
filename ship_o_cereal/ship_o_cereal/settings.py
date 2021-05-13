@@ -44,7 +44,12 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'front_page.apps.FrontPageConfig',
     'about_us.apps.AboutUsConfig',
+    'django_countries',
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
