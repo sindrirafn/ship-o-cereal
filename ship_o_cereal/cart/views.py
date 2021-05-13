@@ -5,14 +5,15 @@ from .models import *
 import json
 # Create your views here.
 
-
+"""
 def index(request):
     return render(request, 'cart/index.html')
+"""
 
 
-def cart(request):
+def index(request):
     if request.user.is_authenticated:
-        customer = request.user.user
+        customer = request.user.Profile
         cart, created = Cart.objects.get_or_create(customer=customer, complete=False)
         items = cart.cartitem_set.all()
     else:

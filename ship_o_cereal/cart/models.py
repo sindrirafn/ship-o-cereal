@@ -14,7 +14,7 @@ class Cart(models.Model):
 
     @property
     def get_cart_total(self):
-        orderItems = self.orderitems_set.all()
+        orderItems = self.cartitem_set.all()
         total = sum([item.get_total for item in orderItems])
         return total
 
@@ -26,7 +26,8 @@ class CartItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     @property
-    def get(self):
+    def get_total(self):
         total = self.product.price * self.count
         return total
+
 
