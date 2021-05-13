@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <h1> Hello {{ user.first_name }}</h1>
+    <h1> Hello {{ user.username }}</h1>
     <form class="form form-horizontal" method="post">
         {% csrf_token %}
         {{ form }}
@@ -10,7 +10,7 @@
     </form>
     <div class="container">
         <h2 class="pt-3"> User information </h2>
-        <img src="{% static 'images/johnny.jpeg' %}" class="rounded-circle w-25 p-3" alt="Johnny">
+        <img src="{{ user.profile.profile_img }}">
         <div class="d-inline-block">
             <h1>Jón Jónsson</h1>
             <a href="{% url "user-edit" %}" class="btn btn-outline-secondary my-2 my-sm-0">Edit profile</a>
