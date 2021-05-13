@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<form class="border border-light p-5">
+<form id = "form" class="border border-light p-5">
 
     <p class="h4 mb-4 text-center">Contact Information</p>
 
@@ -35,8 +35,26 @@
     <label for="zipInput">Zip code</label>
     <input type="text" id="zipInput" class="form-control mb-4" placeholder="Text input">
 
-    <a href="{% url 'checkout-index' %}" class="btn btn-info btn-block my-4" type="submit">Continue to payment</a>
+    <a id="form-button" href="{% url 'checkout-index' %}" class="btn btn-info btn-block my-4" type="submit">Continue to payment</a>
 
 </form>
+
+<script type="text/javascript">
+
+    let total = "{{ order.get_cart_total|floatformat:0 }}"
+    console.log(total)
+
+    let form = document.getElementById('form')
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault()
+        console.log('Form Submitted')
+        document.getElementById('form-button').classList.add('hidden')
+        console.log(form)
+    })
+
+
+
+</script>
 
 {% endblock %}

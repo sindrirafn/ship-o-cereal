@@ -17,11 +17,12 @@
                         <div class="form-group"> <label for="CVC" class="text-uppercase">CVC &ensp; </label> <a href="#" data-toggle="tooltip" data-placement="right" title="CVC is a credit or debit card number, the last three digit number printed on the signature panel">What's this</a> <input type="password" class="form-control pr-5" maxlength="3" placeholder="###"> </div>
                     </div>
                 </div>
-                <div><a href="#" class="btn btn-success my-2 btn-block">Place order</a></div>
+                <div><a href="{% url 'confirmation-index' %}" class="btn btn-success my-2 btn-block">Place order</a></div>
+                <a href="{% url 'checkout-contact' %}" class="btn btn-info btn-block my-4" type="submit">Go back to Contact details</a>
                 <div><a href="{% url 'cart-index' %}" class="btn btn-primary btn-block">Cancel</a></div>
                 <div id="form-footer">
                     <p>By placing your order, you agree to our</p>
-                    <p><a href="#">privacy notice</a> & <a href="#">terms of use</a>.</p>
+                    <p><a href="">privacy notice</a> & <a href="#">terms of use</a>.</p>
                 </div>
             </form>
         </div>
