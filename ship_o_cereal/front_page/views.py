@@ -16,7 +16,8 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('login-index')
+
     return render(request, 'front_page/register.html', {
-        'form': CustomUserCreationForm()
+        'form': CustomUserCreationForm
     })
 

@@ -2,20 +2,23 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <h1> Hello {{ user.first_name }}</h1>
-    <form class="form form-horizontal" method="post">
-        {{ csrf_token }}
-        {{ form }}
-        <input type="submit" class="btn btn-primary" value="update"/>
-    </form>
-    <div class="container">
-        <h2 class="pt-3"> User information </h2>
-        <img src="{% static 'images/johnny.jpeg' %}" class="rounded-circle w-25 p-3" alt="Johnny">
-        <div class="d-inline-block">
-            <h1>Jón Jónsson</h1>
-            <a href="{% url "user-edit" %}" class="btn btn-outline-secondary my-2 my-sm-0">Edit profile</a>
-            <a href="{% url "user-wishlist" %}" class="btn btn-outline-danger my-2 my-sm-0">Wishlist</a>
-        </div>
+    <h1>Hi, {{ user.first_name }}!</h1>
 
+<!--    <img src="{{ user.profile.profile_image }}" class="team-img"/>-->
+    <div class="container">
+        <img src="{% static 'images/johnny.jpeg' %}" class="rounded-circle w-25 p-3" alt="Johnny">
+        <div class="d-inline-block"><br></div>
+        <div class="d-inline-block">
+            <h2>Full name:</h2>
+            <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+            <h2>Username:</h2>
+            <h4>{{ user.username }}</h4>
+            <h2>E-mail:</h2>
+            <h4>{{ user.email }}</h4>
+        </div>
+    </div>
+    <div class="container">
+        <a href="{% url "user-edit" %}" class="btn btn-outline-secondary my-2 my-sm-0">Edit profile</a>
+        <a href="{% url "user-wishlist" %}" class="btn btn-outline-danger my-2 my-sm-0">Wishlist</a>
     </div>
 {% endblock %}
