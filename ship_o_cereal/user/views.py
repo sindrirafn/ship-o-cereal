@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import PasswordChangeForm
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash
 from .models import Profile
@@ -74,3 +75,8 @@ def change_pw(request):
         form = PasswordChangeForm(user=request.user)
         args = {'form': form}
         return render(request, 'user/change_pw.html', args)
+
+
+def update_search_history(request):
+    return 1
+        # return JsonResponse(searchStr)

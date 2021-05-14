@@ -61,6 +61,7 @@ $(document).ready(function() {
                 $('.products').html(newHtml.join(''));
                 $('#search-box').val('');
                 updateCartButtons();
+                // updateSearchHistory(searchText);
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -193,36 +194,15 @@ input.addEventListener("keydown", function(event) {
 
     });
 
-// function updateUserHistory(search_string) {
+// function updateSearchHistory(search_string) {
 //     $.ajax({
-//         url: '/products?searchStr=' + searchText,
+//         url: '/users/search-hist?searchStr=' + search_string,
 //         type: 'POST',
-//         data: {
-//
-//         }
-//
-//                 success: function(resp) {
-//                     var newHtml = resp.data.map(d => {
-//                         return list_disp(d)
-//                     });
-//                     $('.products').html(newHtml.join(''));
-//                     $('#search-box').val('');
-//                     updateCartButtons();
-//                 },
-//                 error: function (xhr, status, error) {
-//                     console.error(error);
-//                 }
-//             })
-//
-//     fetch(url, {
-//         method: 'POST',
-//         headers:{
-//             'Content-Type':'application/json',
-//             'X-CSRFTOKEN':csrftoken
+//         success: function (resp) {
+//             console.log(resp.data)
 //         },
-//         body:JSON.stringify({'productId': productId, 'action':action})
+//         error: function (xhr, status, error) {
+//             console.error(error);
+//         }
 //     })
-//         .then((response) => {
-//             console.log('response', response)
-//         })
 // }

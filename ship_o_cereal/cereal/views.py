@@ -115,3 +115,4 @@ def updatecart(request):
         cartItem.delete()
 
     return JsonResponse('Item was added', safe=False)
+
