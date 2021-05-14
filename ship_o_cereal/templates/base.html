@@ -36,13 +36,14 @@ const csrftoken = getToken('csrftoken');
 <body>
     {% include 'navbar.html' %}
     <div class = "container mb-5 pb-5">
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible bg-success text-white" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+      </div>
+    {% endfor %}
     {% block content %}
     {% endblock %}
 
