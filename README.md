@@ -14,7 +14,8 @@ You should now be able to run the server using
 
 Log-in for database:
 
-**user** ***shipocereal*** 
+**user** ***shipocereal***
+ 
 **pass** ***verklegt2***
 
 # Development
