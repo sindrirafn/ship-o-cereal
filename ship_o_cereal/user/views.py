@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -77,6 +79,16 @@ def change_pw(request):
         return render(request, 'user/change_pw.html', args)
 
 
+
+# inserts string into users search history
 def update_search_history(request):
-    return 1
-        # return JsonResponse(searchStr)
+
+    data = json.loads(request.body)
+    search_string = data['search_string']
+    print(search_string)
+    return JsonResponse('Item was added', safe=False)
+
+# returns users search history
+# def get_search_history(request):
+#     # results = JSON með öllum strengjum fyrir userinn
+#     return JsonResponse({'data': results})

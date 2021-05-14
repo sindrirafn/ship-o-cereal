@@ -61,7 +61,7 @@ $(document).ready(function() {
                 $('.products').html(newHtml.join(''));
                 $('#search-box').val('');
                 updateCartButtons();
-                // updateSearchHistory(searchText);
+                updateSearchHistory(searchText);
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -194,15 +194,21 @@ input.addEventListener("keydown", function(event) {
 
     });
 
-// function updateSearchHistory(search_string) {
-//     $.ajax({
-//         url: '/users/search-hist?searchStr=' + search_string,
-//         type: 'POST',
-//         success: function (resp) {
-//             console.log(resp.data)
-//         },
-//         error: function (xhr, status, error) {
-//             console.error(error);
-//         }
-//     })
-// }
+function updateSearchHistory(search_string) {
+
+    let url = '/users/add_hist'
+
+    fetch(url, {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'X-CSRFTOKEN':csrftoken
+        },
+        body:JSON.stringify({'search_string': search_string})
+    })
+        .then((response) => {
+            console.log('response', response)
+        })
+
+}
+
