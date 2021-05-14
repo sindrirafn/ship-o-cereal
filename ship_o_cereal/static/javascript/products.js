@@ -13,7 +13,9 @@ function list_disp(x) {
                     <!--Price-->
                     <h5 class="card-title">${x.price} ISK</h5>
                     <a href="/products/${x.name}" class="btn btn-primary">Info</a>
-                    <a data-product="${x.id}" data-action="add" class="btn btn-primary btn-inline update-cart" >+Cart</a>
+                    <a data-product="${x.id}" data-action="add" class="btn btn-success btn-inline update-cart" >
+                        <i class="fas fa-cart-plus"></i>
+                    </a>
                 </div>
             </div>
         </div>`
@@ -127,6 +129,7 @@ $(document).ready(function() {
     });
 
 });
+
 
 $(document).ready(function() {
         $("input:radio[name=cat-btn]").change(function(e) {

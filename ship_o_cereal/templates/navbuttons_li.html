@@ -1,8 +1,8 @@
 <div class="d-flex btn-group" role="group" aria-label="Basic example">
     {% if user.is_authenticated %}
-        <a href="{% url 'profile-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Profile</a>
         <a href="{% url 'logout-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Log out</a>
-        <a href="{% url 'cart-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Cart</a>
+        <a href="{% url 'profile-index' %}" class="btn btn-outline-primary my-2 my-sm-0"><i class="fas fa-user"></i></a>
+        <a href="{% url 'cart-index' %}" class="btn btn-outline-primary my-2 my-sm-0"><i class="fas fa-shopping-cart"></i></a>
     {% else %}
         {% include 'navbuttons_lo.html' %}
     {% endif %}

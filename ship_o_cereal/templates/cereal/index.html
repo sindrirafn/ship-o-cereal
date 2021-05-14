@@ -3,6 +3,7 @@
 {% block content %}
     <div class="d-flex flex-row justify-content-between mt-3 mb-1">
         <div class="pl-2">
+            {# Search bar form #}
             <form class="form-inline" id="search-form">
                 <input class="form-control mr-sm-2 searchHistory" type="search" id="search-box" placeholder="Search" aria-label="Search" name="searchStr" autocomplete="off" value="">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn">Search</button>
@@ -11,6 +12,7 @@
 
         </div>
 
+        {# Buttons to determine how catalogue is ordered (name/price) #}
         <div class="d-inline-flex align-middle">
             <div class="align-content-middle pr-2">
                 <p>Order by:</p>
@@ -37,7 +39,7 @@
     </div>
 
     <div class="d-inline-flex justify-content-between w-100 p-2">
-
+        {# Container for displaying product catalogue #}
         <div class="row row-cols-1 row-cols-md-3 w-75 products">
 
             {% for product in products %}
@@ -46,13 +48,15 @@
 
         </div>
 
+        {# Container for filters #}
         <div class="w-20">
 
-            <h1>Filter Area</h1>
+            <h2>Filters:</h2>
+            <hr/>
+            <h3>Brand</h3>
 
-            <h2>Brand</h2>
-
-            <div class="d-flex flex-column btn-group btn-group-toggle" id="brand-btn-group" data-toggle="">
+{#            <div class="d-flex flex-column btn-group btn-group-toggle pb-2" id="brand-btn-group" data-toggle="">#}
+            <div class="d-flex flex-column pb-2" id="brand-btn-group" data-toggle="">
                 <div class="form-check">
                     <label class="radio form-check-label active">
                         <input class="form-check-input" type="radio" name="brand-filter" id="brand-filter-btn" autocomplete="off" checked value="">
@@ -68,11 +72,11 @@
                     </div>
                 {% endfor %}
             </div>
-
-            <h2>Category</h2>
-            <div class="d-flex flex-column btn-group btn-group-toggle" id="category-btn-group" data-toggle="">
+            <hr/>
+            <h3>Category</h3>
+            <div class="d-flex flex-column" id="category-btn-group" data-toggle="">
                 <div class="form-check">
-                    <label class="form-check-label active">
+                    <label class="radio form-check-label active">
                         <input class="form-check-input" type="radio" name="cat-btn" id="cat-btn" autocomplete="off" checked value="">
                         All
                     </label>
@@ -89,23 +93,7 @@
                     </label>
                 </div>
             </div>
-{#            <div class="btn-group-vertical btn-group-toggle" id="category-btn-group" data-toggle="">#}
-{##}
-{#                    <label class="radio form-check-label active">#}
-{#                        <input class="form-check-input" type="radio" name="cat-btn" id="cat-btn" autocomplete="off" checked value="Cereal">#}
-{#                        Cereal#}
-{#                    </label>#}
-{##}
-{#                    <label class="radio form-check-label">#}
-{#                        <input class="form-check-input" type="radio" name="cat-btn" id="cat-btn" autocomplete="off" value="Merch"> Merch#}
-{#                    </label>#}
-{##}
-{#            </div>#}
-{#            <form>#}
-{#                <input type="radio" name="cat-btn" id="category-all" checked value="">All<br>#}
-{#                <input type="radio" name="cat-btn" id="category-filter"  value="Cereal">Cereal<br>#}
-{#                <input type="radio" name="cat-btn" id="category-filter" value="Merch">Merch#}
-{#            </form>#}
+
         </div>
 
     </div>

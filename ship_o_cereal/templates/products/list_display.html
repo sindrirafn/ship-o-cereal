@@ -20,7 +20,9 @@
             <h5 class="card-title">{{ product.price|floatformat:0 }} ISK</h5>
             <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
             <a href="{{ product.name }}" class="btn btn-primary">Info</a>
-            <a data-product="{{ product.id }}" data-action="add" class="btn btn-primary btn-inline update-cart" >+Cart</a>
+            <a data-product="{{ product.id }}" data-action="add" class="btn btn-success btn-inline update-cart" >
+                <i class="fas fa-cart-plus"></i>
+            </a>
         </div>
     </div>
 </div>
