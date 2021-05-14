@@ -4,12 +4,14 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash
-from .models import Profile
+from .models import Profile, SearchHistory, SearchedItem
 from django.contrib import messages
 from .forms import (
     TheProfileForm,
     ImprovedUserChangeForm,
     ChangePicForm)
+
+
 
 
 def index(request):
@@ -82,13 +84,18 @@ def change_pw(request):
 
 # inserts string into users search history
 def update_search_history(request):
-
     data = json.loads(request.body)
     search_string = data['search_string']
+    searchhistory, create = SearchHistory.objects.get_or_create(user=request.user)
+    searcheditem, create = SearchedItem.objects.get_or_create(searchHistory=searchhistory)
+    searcheditem.searchItem = search_string
+    searchhistory.save()
+    searcheditem.save()
     print(search_string)
     return JsonResponse('Item was added', safe=False)
 
 # returns users search history
-# def get_search_history(request):
-#     # results = JSON með öllum strengjum fyrir userinn
-#     return JsonResponse({'data': results})
+def get_search_history(request):
+    searchhistory, created = SearchHistory.objects.get_or_create(user=request.user)
+    items = searchhistory.searcheditem_set.all()
+    return JsonResponse({'data': items})
