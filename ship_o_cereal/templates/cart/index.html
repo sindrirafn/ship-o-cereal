@@ -28,7 +28,7 @@
                         <tbody>
                             {% for item in item %}
                             <tr>
-                                <td><img src={{ item.product.image}}/> </td>
+                                <td><img src="{{ images.image }}"/> </td>
                                 <td>{{ item.product.name }}</td>
                                 <td>In stock</td>
                                 <td class="text-center"> {{ item.count }}</td>
