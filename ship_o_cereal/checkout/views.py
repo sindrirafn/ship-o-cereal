@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from cart.models import Cart
-from checkout.forms import ContactInfoForm
+from checkout.forms import ContactInfoForm, PaymentForm
 
 # Create your views here.
 
@@ -20,17 +20,18 @@ def getcart(request):
     return context
 
 
-def index(request):
+def creditcard(request):
     context = getcart(request)
-    form = ContactInfoForm()
+    form = PaymentForm()
     context['form'] = form
-    return render(request, 'checkout/index.html', context)
+    return render(request, 'checkout/creditcard.html', context)
 
 
 def contact(request):
-    context = getcart(request)
-    form = ContactInfoForm()
-    context['form'] = form
+    if request.method == 'GET':
+        context = getcart(request)
+        form = ContactInfoForm()
+        context['form'] = form
     return render(request, 'checkout/contact.html', context)
 
 

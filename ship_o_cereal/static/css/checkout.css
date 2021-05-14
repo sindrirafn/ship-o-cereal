@@ -6,6 +6,23 @@
     border-radius: 10px
 }
 
+.asteriskField {
+    display: none;
+}
+
+.ctrlHolder{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    align-self: flex-end;
+}
+
+.textInput{
+    align-self: flex-end;
+}
+
+.requiredField{
+    align-self: flex-start;
+}
+
 h4 {
     font-weight: 800;
     color: #888
@@ -70,4 +87,6 @@ label {
         width: 85%
     }
 }
+
+
 

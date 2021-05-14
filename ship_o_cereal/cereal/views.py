@@ -15,12 +15,12 @@ import json
 #     else:
 #         context = {'products': Product.objects.all().order_by('name')}
 #
-#     return render(request, 'cereal/index.html', context)
+#     return render(request, 'cereal/creditcard.html', context)
 brandNames = Product.objects.values('brand').distinct()
 # def index(request):
 #
 #     if 'searchStr' not in request.GET and 'filterBy' not in request.GET:
-#         return render(request, 'cereal/index.html',
+#         return render(request, 'cereal/creditcard.html',
 #                       context = {'products': Product.objects.all().order_by('name'), 'brandNames': brandNames })
 #
 #     else:
@@ -35,7 +35,7 @@ brandNames = Product.objects.values('brand').distinct()
 #         # brands = results.distinct('manufacturer').order_by('manufacturer')
 #         # context = {'products': results, 'brands': brands}
 #         context = {'products': results, 'brandNames': brandNames}
-#         return render(request, 'cereal/index.html', context)
+#         return render(request, 'cereal/creditcard.html', context)
 
 def index(request):
     if 'searchStr' in request.GET:

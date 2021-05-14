@@ -4,19 +4,11 @@
 {% block content %}
 
     <h2>Check-out contact info</h2>
-    <form action="{% url 'checkout-index' %}" method = "POST">
+    <form action="{% url 'checkout-creditcard' %}" method = "POST">
 
         {% csrf_token %}
-        <div>
-            {{ form.first_name|as_crispy_field }}
-            {{ form.last_name|as_crispy_field }}
-            {{ form.email|as_crispy_field }}
-            {{ form.address|as_crispy_field }}
-            {{ form.apartment_number|as_crispy_field }}
-            {{ form.additional_information|as_crispy_field }}
-            {{ form.country|as_crispy_field }}
-            {{ form.city|as_crispy_field }}
-            {{ form.zip|as_crispy_field }}
+        <div class="wrapper">
+            {{ form|crispy }}
 
         <input class="btn btn-primary" type='submit'>Next step</input>
         </div>

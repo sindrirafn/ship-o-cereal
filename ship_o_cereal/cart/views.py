@@ -7,7 +7,7 @@ import json
 
 """
 def index(request):
-    return render(request, 'cart/index.html')
+    return render(request, 'cart/creditcard.html')
 """
 
 
