@@ -15,6 +15,7 @@ class SearchedItem(models.Model):
     searchItem = models.CharField(max_length=255, null=True, blank=True)
 
 
+# make_profile creates a entry in the user_profile table connected to user created
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='Profile', on_delete=models.CASCADE)
     profile_img = models.CharField(max_length=9999, default="https://img.icons8.com/material-rounded/200/000000/user.png")

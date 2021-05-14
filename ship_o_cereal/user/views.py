@@ -41,7 +41,7 @@ def profile(request):
         'form': TheProfileForm(instance=profile)
     })
 
-
+# View to edit user profile.
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -54,7 +54,7 @@ def edit_profile(request):
         form = ImprovedUserChangeForm(instance=request.user)
     return render(request, 'user/edit_profile.html', {'form': form})
 
-
+# View to change the profile picture for the user
 @login_required
 def change_pic(request):
     profile = Profile.objects.filter(user=request.user).first()
@@ -71,6 +71,7 @@ def change_pic(request):
     })
 
 
+# View to change the password for the user, the user does not log out if the password change is successful
 @login_required
 def change_pw(request):
     if request.method == 'POST':

@@ -10,31 +10,17 @@ from django.contrib import messages
 def index(request):
     return render(request, 'front_page/index.html')
 
-
+# Post view for registration to the site
 def register(request):
     if request.method == 'POST':
         form = ImprovedUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {{user.username}}, please log in.')
+            messages.success(request, 'Account created, please log in.')
             return redirect('login-index')
     else:
         form = ImprovedUserCreationForm()
     return render(request, 'front_page/register.html', {'form': form})
 
-
-'''
-def register(request):
-    if request.method == 'POST':
-        form = ImprovedUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, 'Successfully registered, please log in!')
-            return redirect('login-index')
-    else:
-        form = ImprovedUserCreationForm()
-    return render(request, 'front_page/register.html', {'form': form})
-'''
 
