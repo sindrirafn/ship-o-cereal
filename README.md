@@ -20,3 +20,6 @@ Log-in for database:
 
 # Development
 This project was developed by three students, Jón Evert, Sindri Rafn and Steinar, from the University of Reykjavík using github for version controll and a postgres database. We used the Django Model api and tried to follow the MTV pattern.
+
+# Github repository
+https://github.com/sindrirafn/ship-o-cereal.git
