@@ -3,13 +3,7 @@
 {% load static %}
 {% block content %}
     <h1> Welcome to your profile {{ user.first_name }} {{ user.last_name }}!</h1>
-    <form class="form form-horizontal" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" class="btn btn-primary" value="update"/>
-    </form>
     <div class="container">
-        <h2 class="pt-3"> User information </h2>
         <img src="{{ user.Profile.profile_img }}" class="rounded-circle w-25 p-3">
         <div class="d-inline-block">
             <a href="{% url "user-edit" %}" class="btn btn-outline-secondary my-2 my-sm-0">Edit profile</a>
