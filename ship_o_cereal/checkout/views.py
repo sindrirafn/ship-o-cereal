@@ -9,6 +9,7 @@ from django_countries import countries
 
 # Create your views here.
 
+
 # helper function to get the cart to all views in check-out process
 def getcart(request):
     if request.user.is_authenticated:
@@ -24,7 +25,9 @@ def getcart(request):
     context = {'item': items, 'cart': cart}
     return context
 
-
+# GET and POST for creditcart input site
+# GET renders page and POST does little
+# becasue we dont keep CC data
 def creditcard(request):
     if request.method == 'GET':
         context = getcart(request)
@@ -52,6 +55,9 @@ def creditcard(request):
     return render(request, 'checkout/creditcard.html', context)
 
 
+# GET and POST for shipping address and contact details
+# GET renders page and form
+# POST adds the shipping info into the contact model
 def contact(request):
     if request.method == 'GET':
         context = getcart(request)
@@ -89,7 +95,9 @@ def contact(request):
             return redirect('/')
 
 
-
+# GET and POST for the overview confirmation site
+# GET renders Site with order summary
+# POST empties the cart and "processes" the payment and shipping
 def confirmation(request):
     if request.method == 'GET':
         context = getcart(request)
@@ -110,6 +118,8 @@ def confirmation(request):
         cart.save()
         return redirect('checkout-receipt')
 
+
+# GET: renders the reciept site and returns all info of last order
 def receipt(request):
     cart = Cart.objects.filter(customer=request.user.Profile).last()
     items = cart.cartitem_set.all()

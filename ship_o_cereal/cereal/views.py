@@ -81,15 +81,14 @@ def index(request):
     context = {'products': Product.objects.all().order_by('name'), 'brandNames': brandNames}
     return render(request, 'cereal/index.html', context)
 
-
+# search function, used in search
 def product_by_name(request, name):
     return render(request, 'products/single_product.html', {
         'product': get_object_or_404(Product, name=name)
     })
 
 
-
-
+# used to update cart when cart button is clicked, see cart.js
 def updatecart(request):
     data = json.loads(request.body)
     productId = data['productId']
@@ -98,7 +97,7 @@ def updatecart(request):
     product = Product.objects.get(id=productId)
     cart, created = Cart.objects.get_or_create(customer=customer, complete=False)
     cartItem, created = CartItem.objects.get_or_create(cart=cart, product=product)
-
+    # add adds one but remove removes all instances of object in cart
     if action == 'add':
         cartItem.count = (cartItem.count +1)
     elif action == 'remove':
