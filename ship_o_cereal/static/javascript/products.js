@@ -18,37 +18,7 @@ function list_disp(x) {
         </div>`
         }
 
-function searchHistoryItems() {
-    var historyItems = document.getElementsByClassName("history-item")
-
-
-    for (var i = 0; i < historyItems.length; i++) {
-
-        historyItems[i].addEventListener("click", function (e) {
-            e.preventDefault();
-            var searchText = $(this).val();
-            $.ajax({
-                url: '/products?searchStr=' + searchText,
-                type: 'GET',
-                success: function(resp) {
-                    var newHtml = resp.data.map(d => {
-                        return list_disp(d)
-                    });
-                    $('.products').html(newHtml.join(''));
-                    $('#search-box').val('');
-                    updateCartButtons();
-                },
-                error: function (xhr, status, error) {
-                    console.error(error);
-                }
-            })
-        });
-
-}}
-
-// Search function
-$(document).ready(function() {
-    $('#search-btn').on('click', function(e) {
+function search(e) {
         e.preventDefault();
         var searchText = $('#search-box').val();
         $.ajax({
@@ -69,24 +39,74 @@ $(document).ready(function() {
         })
 
 
-    });
+    }
+
+function searchHistoryItems() {
+    var historyItems = document.getElementsByClassName("history-item")
+
+
+    for (var i = 0; i < historyItems.length; i++) {
+
+        historyItems[i].addEventListener("click", function (e) {
+            e.preventDefault();
+            var searchText = $(this).val();
+            $.ajax({
+                url: '/products?searchStr=' + searchText,
+                type: 'GET',
+                success: function(resp) {
+                    var newHtml = resp.data.map(d => {
+                        return list_disp(d)
+                    });
+                    $('.products').html(newHtml.join(''));
+                    // $('#search-box').val('');
+                    updateCartButtons();
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            })
+        });
+
+}}
+
+// Search function
+$(document).ready(function() {
+    $('#search-btn').on('click', function (event){
+        search(event)
+        }
+    //     function(e) {
+    //     e.preventDefault();
+    //     var searchText = $('#search-box').val();
+    //     $.ajax({
+    //         url: '/products?searchStr=' + searchText,
+    //         type: 'GET',
+    //         success: function(resp) {
+    //             var newHtml = resp.data.map(d => {
+    //                 return list_disp(d)
+    //             });
+    //             $('.products').html(newHtml.join(''));
+    //             $('#search-box').val('');
+    //             updateCartButtons();
+    //             updateSearchHistory(searchText);
+    //         },
+    //         error: function (xhr, status, error) {
+    //             console.error(error);
+    //         }
+    //     })
+    //
+    //
+    // }
+    );
 });
 
+// let input;
+// let input;
 
-
-var input = document.getElementById("search-box");
 
 // Execute a function when the user releases a key on the keyboard
-input.addEventListener("keypress", function(event) {
-  // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    document.getElementById("search-btn").click();
-  }
-});
+// $(document).ready(function() {
 
+// })
 
 
 $(document).ready(function() {
@@ -161,39 +181,6 @@ $(document).ready(function() {
 
 
 
-
-input.addEventListener("click", function(event) {
-    $('#collapseExample').collapse('show');
-    $.ajax({
-            url: '/users/get_hist',
-            type: 'GET',
-            success: function(resp) {
-                var newHtml = resp.data.map(d => {
-                    return `<button class="border-0 bg-white history-item" id="search-history-item" value="${d.searchItem}">
-                                ${d.searchItem}
-                            </button><br>`
-                });
-                $('.search-history').html(newHtml.join(''));
-                searchHistoryItems();
-            },
-            error: function (xhr, status, error) {
-                console.error(error);
-            }
-        })
-    });
-
-
-
-input.addEventListener("focusout", function(event) {
-    $('#collapseExample').collapse('hide');
-
-    });
-
-input.addEventListener("keydown", function(event) {
-    $('#collapseExample').collapse('hide');
-
-    });
-
 function updateSearchHistory(search_string) {
 
     let url = '/users/add_hist'
@@ -212,3 +199,48 @@ function updateSearchHistory(search_string) {
 
 }
 
+function formatSearchBar(){
+    if (document.getElementById("search-box") !== null) {
+        let input = document.getElementById("search-box")
+        input.addEventListener("focusout", function(event) {
+            setTimeout(function() {
+
+            $('#collapseExample').collapse('hide');
+            }, 500);
+            });
+
+        input.addEventListener("keydown", function(event) {
+            $('#collapseExample').collapse('hide');
+
+            });
+
+        input.addEventListener("click", function(event) {
+            $('#collapseExample').collapse('show');
+            $.ajax({
+                    url: '/users/get_hist',
+                    type: 'GET',
+                    success: function(resp) {
+                        var newHtml = resp.data.map(d => {
+                            return `<button class="border-0 bg-white history-item" id="search-history-item" value="${d.searchItem}">
+                                        ${d.searchItem}
+                                    </button><br>`
+                        });
+                        $('.search-history').html(newHtml.join(''));
+                        searchHistoryItems();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                })
+            });
+
+        input.addEventListener("keypress", function (event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+                search(event)
+            }
+});
+}
+}
+
+formatSearchBar()
