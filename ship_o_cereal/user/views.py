@@ -1,5 +1,5 @@
 import json
-
+from django.core import serializers
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -86,16 +86,31 @@ def change_pw(request):
 def update_search_history(request):
     data = json.loads(request.body)
     search_string = data['search_string']
-    searchhistory, create = SearchHistory.objects.get_or_create(user=request.user)
-    searcheditem, create = SearchedItem.objects.get_or_create(searchHistory=searchhistory)
-    searcheditem.searchItem = search_string
-    searchhistory.save()
-    searcheditem.save()
-    print(search_string)
-    return JsonResponse('Item was added', safe=False)
+    if request.user.is_authenticated:
+        searchhistory, create = SearchHistory.objects.get_or_create(user=request.user)
+        searcheditem, create = SearchedItem.objects.get_or_create(searchHistory=searchhistory, searchItem=search_string)
+        searcheditem.searchItem = search_string
+        searchhistory.save()
+        searcheditem.save()
+        print(search_string)
+        return JsonResponse('Item was added', safe=False)
+    else:
+        return JsonResponse({'data': ""})
 
 # returns users search history
 def get_search_history(request):
-    searchhistory, created = SearchHistory.objects.get_or_create(user=request.user)
-    items = searchhistory.searcheditem_set.all()
-    return JsonResponse({'data': items})
+    if request.user.is_authenticated:
+        # searchhistory = SearchHistory.objects.filter(user=request.user)
+        searchhistory, created = SearchHistory.objects.get_or_create(user=request.user)
+        items = searchhistory.searcheditem_set.values('searchItem')
+
+        # data = items.values()
+        # data = serializers.serialize('json', items)
+        data = list(items)
+        print(data)
+        # print(data['fields'])
+        # print(data)
+        return JsonResponse({'data': data})
+    else:
+        items = []
+        return JsonResponse({'data': items})

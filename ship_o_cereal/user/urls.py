@@ -10,7 +10,7 @@ urlpatterns = [
     path('change_pic', views.change_pic, name="user-pic"),
     path('change_pw', views.change_pw, name="change-pw"),
     path('add_hist', views.update_search_history, name="add-hist"),
-    # path('get_hist', views.get_search_history, name="get-hist"),
+    path('get_hist', views.get_search_history, name="get-hist"),
 
 
 ]

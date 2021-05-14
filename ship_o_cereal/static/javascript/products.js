@@ -165,12 +165,12 @@ $(document).ready(function() {
 input.addEventListener("click", function(event) {
     $('#collapseExample').collapse('show');
     $.ajax({
-            url: '/products?category-filter=' + 'Merch',
+            url: '/users/get_hist',
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
-                    return `<button class="border-0 bg-white history-item" id="search-history-item" value="${d.name}">
-                                ${d.name}
+                    return `<button class="border-0 bg-white history-item" id="search-history-item" value="${d.searchItem}">
+                                ${d.searchItem}
                             </button><br>`
                 });
                 $('.search-history').html(newHtml.join(''));
