@@ -31,10 +31,11 @@
                                 <td><img src={{ item.product.image}}/> </td>
                                 <td>{{ item.product.name }}</td>
                                 <td>In stock</td>
-                                <td> {{ item.count }}</td>
+                                <td class="text-center"> {{ item.count }}</td>
                                 <td class="text-center">{{ item.product.price }} ISK</td>
                                 <td class="text-right">{{ item.get_total }} ISK</td>
-                                <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                                <td class="text-right"><button data-product="{{ item.product.id }}" data-action="remove" class=" update-cart btn btn-sm btn-danger ">
+                                    <i class="fa fa-trash"></i> </button> </td>
                             </tr>
                             {% endfor %}
                             <tr>
@@ -57,7 +58,9 @@
                         <a href="{% url 'products-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Continue Shopping Cereal</a>
                     </div>
                     <div class="col-sm-12 col-md-6 text-right">
-                        <a href="{% url 'checkout-contact' %}" class="btn btn-outline-success my-2 my-sm-0">Checkout</a>
+                        {% if item %}
+                            <a href="{% url 'checkout-contact' %}" class="btn btn-outline-success my-2 my-sm-0">Checkout</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

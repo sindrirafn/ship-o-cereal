@@ -108,7 +108,7 @@ def updatecart(request):
     if action == 'add':
         cartItem.count = (cartItem.count +1)
     elif action == 'remove':
-        cartItem.count = (cartItem.count -1)
+        cartItem.count = 0
     cartItem.save()
 
     if cartItem.count <= 0:

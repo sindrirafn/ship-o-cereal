@@ -2,26 +2,9 @@
 {% load static %}
 {% block content %}
 
-    <h1>Review information</h1>
-    <p class = "readonly">Please review your purchase and delivery address</p>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <address>
-                    <strong>{{ contact.first_name }} {{ contact.last_name }}</strong><br>
-                    {{ contact.address}} {{ contact.apartment_number }}<br>
-                    {{ contact.zip }}, {{ contact.city }}, {{ country }}<br>
-                    <abbr title="email">{{ contact.email }}</abbr>
-                </address>
-
-                <address>
-                    <strong>Other information</strong><br>
-                    <p>{{ contact.additional_information }}</p>
-                </address>
-            </div>
-        </div>
-    </div>
+    <h1>Confirmation</h1>
+    <h3 class = "readonly"> Your purchase was successfull! </h3>
+    <h4 class = "readonly"> See details of your order below </h4>
 
 
     <table class="table table-striped">
@@ -60,19 +43,12 @@
 
     <div class="flex-spacer container ">
         <div class="focus" style="background: lightblue">
-            <p class="readonly flex-spacer">If you select confirm purchase total amount of</p>
-            <p class="readonly flex-spacer">{{ item.get_total }} will be charged to your credit card</p>
-            <p class="ansi-bold flex-spacer">Name on card: {{ payment.nameOnCC }} expiry: {{ payment.expDate }} </p>
+            <div class="readonly flex-spacer">{{ item.get_total }} was charged to your credit card:</div>
+            <div class="ansi-bold flex-spacer">Name on card: {{ payment.nameOnCC }} expiry: {{ payment.expDate }} </div>
         </div>
     </div>
 
-    <form action="{% url 'checkout-confirmation' %}" method="POST">
-        {% csrf_token %}
-        <input class="btn btn-primary" type='submit' value="Confirm purchase"></input>
+    <form action="/">
+        <input type="submit" value="Back to front page" class="btn-checkout"/>
     </form>
-
-    <div class="col-sm-12 col-md-6 text-left">
-        <a href="{% url 'checkout-creditcard' %}" class="btn btn-outline-success my-2 my-sm-0">Go back</a>
-    </div>
-
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from user.models import Profile
 from cereal.models import Product
+from checkout.models import ContactInfo
 # Create your models here.
 
 class Cart(models.Model):
@@ -8,6 +9,7 @@ class Cart(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False, null=True, blank=False)
     transactionId = models.CharField(max_length=255, null=True)
+    contactinfo = models.ForeignKey(ContactInfo, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return str(self.id)

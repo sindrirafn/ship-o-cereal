@@ -4,34 +4,17 @@
 {% block content %}
 
     <h2>Check-out contact info</h2>
-    <form action="{% url 'checkout-creditcard' %}" method = "POST">
+    <form action="{% url 'checkout-contact' %}" method="POST">
 
         {% csrf_token %}
         <div class="wrapper">
-            {{ form|crispy }}
-
-        <input class="btn btn-primary" type='submit'>Next step</input>
+                {{ form|crispy }}
+                <input class="btn btn-primary" type='submit' value="Next step">
         </div>
 
-    </form>
-
-
-<script type="text/javascript">
-
-    let total = "{{ order.get_cart_total|floatformat:0 }}"
-    console.log(total)
-
-    let form = document.getElementById('form')
-
-    form.addEventListener('submit', function(e){
-        e.preventDefault()
-        console.log('Form Submitted')
-        document.getElementById('form-button').classList.add('hidden')
-        console.log(form)
-    })
+    </div>
 
 
 
-</script>
 
 {% endblock %}

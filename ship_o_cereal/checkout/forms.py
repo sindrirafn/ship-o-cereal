@@ -16,6 +16,7 @@ class ContactInfoForm(forms.Form):
     zip = forms.CharField(max_length=20)
 
 
+# cc numer sem virkar i thetta form: 4444333322221111
 class PaymentForm(forms.Form):
     name_on_the_card = forms.CharField(max_length=255, label="Name", widget=forms.TextInput(attrs={'placeholder': 'Name'}))
     cc_number = CardNumberField(label='Card Number', widget=forms.TextInput(attrs={'placeholder': 'Credit card number'}))

@@ -3,11 +3,19 @@
 {% load crispy_forms_tags %}
 {% crispy example_form example_form.helper %}
 {% block content %}
-    <link rel="stylesheet" href="{% static "css/checkout.css" %}">
+
         <div class="wrapper">
             <h4 class="text-uppercase">Payment Details</h4>
+            <form action="{% url 'checkout-creditcard' %}" method="POST">
+                {% csrf_token %}
                 {{ form|crispy }}
-
-
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
+                <input class="btn btn-primary" type='submit' value="Next step"></input>
+            </form>
+            <div class="col-sm-12 col-md-6 text-left">
+                <a href="{% url 'checkout-contact' %}" class="btn btn-outline-success my-2 my-sm-0">Go back</a>
+            </div>
         </div>
 {% endblock %}
