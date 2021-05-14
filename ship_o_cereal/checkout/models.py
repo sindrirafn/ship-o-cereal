@@ -4,7 +4,7 @@ from user.models import Profile
 
 # Create your models here.
 
-
+# keeps all "shipping" info in check-out process
 class ContactInfo(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255)
@@ -20,7 +20,9 @@ class ContactInfo(models.Model):
     def __str__(self):
         return self.first_name
 
-
+# keeps name and exp date of CC
+# Database is not designed to keep CC data so data kept here is
+# "useless" so to speak
 class PaymentInfo(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     nameOnCC = models.CharField(max_length=255)
