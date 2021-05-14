@@ -1,3 +1,5 @@
+
+// Template for html form to display product list
 function list_disp(x) {
     return `<div class="col mb-4">
             <div class="card shadow">     
@@ -12,12 +14,12 @@ function list_disp(x) {
                     <h5 class="card-title">${x.price} ISK</h5>
                     <a href="/products/${x.name}" class="btn btn-primary">Info</a>
                     <a data-product="${x.id}" data-action="add" class="btn btn-primary btn-inline update-cart" >+Cart</a>
-                    <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
                 </div>
             </div>
         </div>`
         }
 
+        // Performs a search within the product catalogue
 function search(e) {
         e.preventDefault();
         var searchText = $('#search-box').val();
@@ -41,6 +43,7 @@ function search(e) {
 
     }
 
+    // Identifies items displayed in search history and applies necessary functions
 function searchHistoryItems() {
     var historyItems = document.getElementsByClassName("history-item")
 
@@ -69,46 +72,16 @@ function searchHistoryItems() {
 
 }}
 
-// Search function
+// Performs a search when 'Search' button is clicked
 $(document).ready(function() {
     $('#search-btn').on('click', function (event){
         search(event)
         }
-    //     function(e) {
-    //     e.preventDefault();
-    //     var searchText = $('#search-box').val();
-    //     $.ajax({
-    //         url: '/products?searchStr=' + searchText,
-    //         type: 'GET',
-    //         success: function(resp) {
-    //             var newHtml = resp.data.map(d => {
-    //                 return list_disp(d)
-    //             });
-    //             $('.products').html(newHtml.join(''));
-    //             $('#search-box').val('');
-    //             updateCartButtons();
-    //             updateSearchHistory(searchText);
-    //         },
-    //         error: function (xhr, status, error) {
-    //             console.error(error);
-    //         }
-    //     })
-    //
-    //
-    // }
     );
 });
 
-// let input;
-// let input;
 
-
-// Execute a function when the user releases a key on the keyboard
-// $(document).ready(function() {
-
-// })
-
-
+// Below are functions for filtering
 $(document).ready(function() {
         $("input:radio[name=order-by]").click(function(e) {
             e.preventDefault();
@@ -154,7 +127,6 @@ $(document).ready(function() {
     });
 
 });
-
 
 $(document).ready(function() {
         $("input:radio[name=cat-btn]").change(function(e) {

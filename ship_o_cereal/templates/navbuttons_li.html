@@ -2,8 +2,9 @@
     {% if user.is_authenticated %}
         <a href="{% url 'profile-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Profile</a>
         <a href="{% url 'logout-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Log out</a>
+        <a href="{% url 'cart-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Cart</a>
     {% else %}
         {% include 'navbuttons_lo.html' %}
     {% endif %}
-    <a href="{% url 'cart-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Cart</a>
+
 </div>
