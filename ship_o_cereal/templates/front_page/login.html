@@ -1,24 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
     <form method="post" class="form form-horizontal">
         {% csrf_token %}
+        {{ form|crispy }}
         <br/>
         <form class="border border-light p-5">
-            <p class="h4 mb-4 text-center">Log in!</p>
-            <input type="text" id="defaultLoginFormEmail" name="username" class="form-control mb-4" placeholder="Username">
-            <input type="password" id="defaultLoginFormPassword" name="password" class="form-control mb-4" placeholder="Password">
-            <div class="d-flex justify-content-between">
-                <div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                        <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-                    </div>
-                </div>
-                <div>
-                    <a href="">Forgot password?</a>
-                </div>
-            </div>
             <input type="submit" class="btn btn-info btn-block my-4" value="Log in" />
             <div class="text-center">
                 <p>Not a member?

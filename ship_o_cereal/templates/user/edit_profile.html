@@ -1,17 +1,14 @@
 
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
     <div class="container">
         <form method="post">
             {% csrf_token %}
-            <tr><th><label for="id_username">Username:</label></th><td><input type="text" name="username" value="{{ user.username }}" class="form-control" maxlength="150" required id="id_username"><span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></td></tr><br><br><br>
-            <tr><th><label for="id_first_name">First name:</label></th><td><input type="text" name="first_name" value="{{ user.first_name }}" class="form-control" maxlength="150" id="id_first_name"></td></tr><br>
-            <tr><th><label for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" value="{{ user.last_name }}" class="form-control" maxlength="150" id="id_last_name"></td></tr><br>
-            <tr><th><label for="id_email">Email address:</label></th><td><input type="text" name="email" value="{{ user.email }}" class="form-control" maxlength="254" id="id_email"></td></tr><br>
+            {{ form|crispy }}
             <input type="submit" class="btn btn-info btn-block my-4" value="Save changes" />
-
         </form>
+        <a href="{% url "profile-index" %}" class="btn btn-block btn-outline-success my-4">Go back</a>
     </div>
-
 {% endblock %}

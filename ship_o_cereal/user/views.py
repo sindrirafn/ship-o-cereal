@@ -1,4 +1,6 @@
 import json
+
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -25,6 +27,7 @@ def wish(request):
     return render(request, 'user/wishlist.html')
 
 
+@login_required
 def profile(request):
     profile = Profile.objects.filter(user=request.user).first()
     if request.method == 'POST':
@@ -39,6 +42,7 @@ def profile(request):
     })
 
 
+@login_required
 def edit_profile(request):
     if request.method == 'POST':
         form = ImprovedUserChangeForm(instance=request.user, data=request.POST)
@@ -48,9 +52,10 @@ def edit_profile(request):
             return redirect('profile-index')
     else:
         form = ImprovedUserChangeForm(instance=request.user)
-        args = {'form': form}
-        return render(request, 'user/edit_profile.html', args)
+    return render(request, 'user/edit_profile.html', {'form': form})
 
+
+@login_required
 def change_pic(request):
     profile = Profile.objects.filter(user=request.user).first()
     if request.method == 'POST':
@@ -66,18 +71,18 @@ def change_pic(request):
     })
 
 
+@login_required
 def change_pw(request):
     if request.method == 'POST':
         form = PasswordChangeForm(user=request.user, data=request.POST)
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            messages.success(request, 'New password confirmed')
+            messages.success(request, f'New password confirmed')
             return redirect('profile-index')
     else:
         form = PasswordChangeForm(user=request.user)
-        args = {'form': form}
-        return render(request, 'user/change_pw.html', args)
+    return render(request, 'user/change_pw.html', {'form': form})
 
 
 

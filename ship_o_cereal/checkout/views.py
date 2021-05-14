@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
@@ -11,6 +12,7 @@ from django_countries import countries
 
 
 # helper function to get the cart to all views in check-out process
+@login_required
 def getcart(request):
     if request.user.is_authenticated:
         try:
@@ -28,6 +30,7 @@ def getcart(request):
 # GET and POST for creditcart input site
 # GET renders page and POST does little
 # becasue we dont keep CC data
+@login_required
 def creditcard(request):
     if request.method == 'GET':
         context = getcart(request)
@@ -58,6 +61,7 @@ def creditcard(request):
 # GET and POST for shipping address and contact details
 # GET renders page and form
 # POST adds the shipping info into the contact model
+@login_required
 def contact(request):
     if request.method == 'GET':
         context = getcart(request)
@@ -98,6 +102,7 @@ def contact(request):
 # GET and POST for the overview confirmation site
 # GET renders Site with order summary
 # POST empties the cart and "processes" the payment and shipping
+@login_required
 def confirmation(request):
     if request.method == 'GET':
         context = getcart(request)
@@ -120,6 +125,7 @@ def confirmation(request):
 
 
 # GET: renders the reciept site and returns all info of last order
+@login_required
 def receipt(request):
     cart = Cart.objects.filter(customer=request.user.Profile).last()
     items = cart.cartitem_set.all()

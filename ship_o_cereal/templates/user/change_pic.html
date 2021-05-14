@@ -9,8 +9,10 @@
     <br>
     <form class="form form-horizontal" method="post">
         {% csrf_token %}
-        <tr><th><label for="id_profile_img">Please paste image url:</label></th><br><td><input type="text" name="profile_img" value="https://www.dv.is/wp-content/uploads/2019/03/%C3%81st%C3%BE%C3%B3r-Magn%C3%BAsson.jpg" class="form-control" maxlength="9999" required id="id_profile_img"></td></tr><br>
+        <tr><th><label for="id_profile_img">Please paste image url:</label></th><br><td><input type="text" name="profile_img" value="{{ user.Profile.profile_img }}" class="form-control" maxlength="9999" required id="id_profile_img"></td></tr><br>
         <input type="submit" class="btn btn-info btn-block my-4" value="Save changes" />
+        <a href="{% url "profile-index" %}" class="btn btn-block btn-outline-success my-4">Go back</a>
+
     </form>
 
 {% endblock %}

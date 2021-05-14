@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -13,6 +14,7 @@ def index(request):
 
 
 # GET gets all items in cart for logged in user and images
+@login_required
 def index(request):
     if request.user.is_authenticated:
         customer = request.user.Profile
