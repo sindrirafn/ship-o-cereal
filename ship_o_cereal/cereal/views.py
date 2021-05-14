@@ -88,12 +88,6 @@ def product_by_name(request, name):
     })
 
 
-def create_cereal(request):
-    if request.method =='POST':
-        return 1
-    else:
-        print(2)
-    return render(request, 'cereal/create_cereal.html')
 
 
 def updatecart(request):
