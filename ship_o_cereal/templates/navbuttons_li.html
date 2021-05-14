@@ -1,5 +1,9 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "css/avatar.css" %}">
+
 <div class="d-flex btn-group" role="group" aria-label="Basic example">
     {% if user.is_authenticated %}
+        <img src="{{ user.Profile.profile_img }}" class="avatar" alt="Avatar">
         <a href="{% url 'logout-index' %}" class="btn btn-outline-primary my-2 my-sm-0">Log out</a>
         <a href="{% url 'profile-index' %}" class="btn btn-outline-primary my-2 my-sm-0"><i class="fas fa-user"></i></a>
         <a href="{% url 'cart-index' %}" class="btn btn-outline-primary my-2 my-sm-0"><i class="fas fa-shopping-cart"></i></a>

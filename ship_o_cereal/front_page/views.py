@@ -17,7 +17,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {{username}}, please log in.')
+            messages.success(request, f'Account created for {{user.username}}, please log in.')
             return redirect('login-index')
     else:
         form = ImprovedUserCreationForm()
