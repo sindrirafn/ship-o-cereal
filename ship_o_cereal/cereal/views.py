@@ -7,10 +7,10 @@ import json
 
 # Create your views here.
 
-
+# Set of all brand names in db
 brandNames = Product.objects.values('brand').distinct()
 
-
+# Handles delivering list of products, either as a whole or filtered
 def index(request):
     if 'searchStr' in request.GET:
         searchParameter = request.GET['searchStr']
@@ -55,7 +55,7 @@ def index(request):
     context = {'products': Product.objects.all().order_by('name'), 'brandNames': brandNames}
     return render(request, 'cereal/index.html', context)
 
-# search function, used in search
+# returns single product identified by name
 def product_by_name(request, name):
     return render(request, 'products/single_product.html', {
         'product': get_object_or_404(Product, name=name)

@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+{# Displays a single product page #}
 
 <div class="container my-5 py-5 z-depth-1">
 
@@ -56,13 +57,7 @@
         <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-5 ml-xl-0 ml-4">
           <strong>{{ product.name }}</strong>
         </h2>
-{#        <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">bestseller</span>#}
-{#        <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">#}
-{#          <span class="red-text font-weight-bold">#}
-{#            <strong>{{ product.price }} ISK</strong>#}
-{#          </span>#}
-{##}
-{#        </h3>#}
+
 
         <!--Accordion wrapper-->
         <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
@@ -154,9 +149,6 @@
         </div>
         <!--/.Accordion wrapper-->
 
-        <!-- Add to Cart -->
-{#        <section class="color">#}
-{#          <div class="mt-5">#}
 
             <h3 class="h3-responsive text-center text-md-right my-5 ml-xl-0 ml-4">
                 <strong>{{ product.price|floatformat:0 }} ISK</strong>
@@ -165,15 +157,13 @@
             <div class="row mt-3">
               <div class="col-md-12 text-center text-md-left text-md-right">
                 <a href="#" class="btn-floating btn btn-danger"><i class="fas fa-heart"></i></a>
-                <button data-product={{ product.id }} data-action="add"  class="btn btn-primary btn-rounded update-cart">
+                <button data-product={{ product.id }} data-action="add"  class="btn btn-success btn-rounded update-cart">
                   <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Add to cart
                 </button>
 
               </div>
             </div>
-{#          </div>#}
-{#        </section>#}
-        <!-- /.Add to Cart -->
+
 
       </div>
 
