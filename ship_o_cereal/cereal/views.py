@@ -66,7 +66,7 @@ def index(request):
             'price': x.price,
             'description': x.description,
             'firstImage': x.cerealimage_set.first().image
-        } for x in Product.objects.filter(brand=brandFilter).order_by('name')]
+        } for x in Product.objects.filter(brand__icontains=brandFilter).order_by('name')]
         return JsonResponse({'data': results})
     if 'category-filter' in request.GET:
         categoryFilter = request.GET['category-filter']

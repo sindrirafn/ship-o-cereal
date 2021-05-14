@@ -1,5 +1,4 @@
 import json
-from django.core import serializers
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -82,35 +81,28 @@ def change_pw(request):
 
 
 
-# inserts string into users search history
+# inserts search string into users search history (except for empty strings)
 def update_search_history(request):
     data = json.loads(request.body)
     search_string = data['search_string']
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and search_string != "":
         searchhistory, create = SearchHistory.objects.get_or_create(user=request.user)
-        searcheditem, create = SearchedItem.objects.get_or_create(searchHistory=searchhistory, searchItem=search_string)
+        searcheditem = SearchedItem.objects.create(searchHistory=searchhistory, searchItem=search_string)
         searcheditem.searchItem = search_string
         searchhistory.save()
         searcheditem.save()
-        print(search_string)
         return JsonResponse('Item was added', safe=False)
     else:
         return JsonResponse({'data': ""})
 
-# returns users search history
+# returns users search history (5 most recent searches)
 def get_search_history(request):
     if request.user.is_authenticated:
-        # searchhistory = SearchHistory.objects.filter(user=request.user)
         searchhistory, created = SearchHistory.objects.get_or_create(user=request.user)
         items = searchhistory.searcheditem_set.values('searchItem')
-
-        # data = items.values()
-        # data = serializers.serialize('json', items)
         data = list(items)
-        print(data)
-        # print(data['fields'])
-        # print(data)
-        return JsonResponse({'data': data})
+        data.reverse()
+        return JsonResponse({'data': data[:5]})
     else:
         items = []
         return JsonResponse({'data': items})

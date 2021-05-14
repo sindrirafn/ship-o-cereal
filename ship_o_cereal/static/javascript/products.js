@@ -180,7 +180,7 @@ $(document).ready(function() {
 });
 
 
-
+//Posts the search string used, to be added into user search history
 function updateSearchHistory(search_string) {
 
     let url = '/users/add_hist'
@@ -199,9 +199,13 @@ function updateSearchHistory(search_string) {
 
 }
 
+// Applies all functionality for the search bar
 function formatSearchBar(){
+    //Check if search bar is within document
     if (document.getElementById("search-box") !== null) {
         let input = document.getElementById("search-box")
+
+        // functions for collapsing search-history once user exits search box or inputs letters
         input.addEventListener("focusout", function(event) {
             setTimeout(function() {
 
@@ -214,6 +218,7 @@ function formatSearchBar(){
 
             });
 
+        // Shows search history when user enters the search bar
         input.addEventListener("click", function(event) {
             $('#collapseExample').collapse('show');
             $.ajax({
@@ -234,6 +239,7 @@ function formatSearchBar(){
                 })
             });
 
+        // Performs search when user hits enter within the search bar
         input.addEventListener("keypress", function (event) {
             // Number 13 is the "Enter" key on the keyboard
             if (event.keyCode === 13) {

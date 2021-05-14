@@ -33,15 +33,11 @@
 
     </div>
     <div class="collapse search-history mb-3" id="collapseExample">
-{#              <div class="mt-3">#}
-{#                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim#}
-{#                keffiyeh helvetica,#}
-{#                craft beer labore wes anderson cred nesciunt sapiente ea proident.#}
-{#              </div>#}
-            </div>
+        {# Search history is inserted here via javascript #}
+    </div>
 
     <div class="d-inline-flex justify-content-between w-100 p-2">
-        {#    #}
+
         <div class="row row-cols-1 row-cols-md-3 w-75 products">
 
             {% for product in products %}
@@ -56,10 +52,10 @@
 
             <h2>Brand</h2>
 
-            <div class="d-flex flex-column btn-group btn-group-toggle" id="brand-btn-group" data-toggle="radio">
+            <div class="d-flex flex-column btn-group btn-group-toggle" id="brand-btn-group" data-toggle="">
                 <div class="form-check">
                     <label class="radio form-check-label active">
-                        <input class="form-check-input" type="radio" name="brand-filter" id="brand-filter-all" autocomplete="off" checked value="">
+                        <input class="form-check-input" type="radio" name="brand-filter" id="brand-filter-btn" autocomplete="off" checked value="">
                         All
                     </label>
                 </div>
